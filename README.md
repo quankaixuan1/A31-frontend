@@ -4,4 +4,6 @@
 
 ```bash
 quasar dev
+or
+npm run dev
 ```

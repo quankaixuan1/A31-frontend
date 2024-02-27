@@ -2,6 +2,13 @@
   <q-tabs vertical class="text-teal side-navigation">
     <q-route-tab
       class="in"
+      name="home"
+      icon="home"
+      label="首页"
+      to="/main/index"
+    />
+    <q-route-tab
+      class="in"
       name="Detect"
       icon="manage_search"
       label="漏洞检测"

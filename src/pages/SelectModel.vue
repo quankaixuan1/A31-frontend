@@ -12,19 +12,19 @@
       <div class="q-pa-md">
         <q-btn-dropdown color="blue" label="将您的大语言模型链接到电脑" dropdown-icon="change_history" size="xl">
           <q-list>
-            <q-item clickable @click="goToMain">
+            <q-item clickable @click="goToMain('模型一')">
               <q-item-section>
                 <q-item-label>模型一</q-item-label>
               </q-item-section>
             </q-item>
 
-            <q-item clickable @click="goToMain">
+            <q-item clickable @click="goToMain('模型二')">
               <q-item-section>
                 <q-item-label>模型二</q-item-label>
               </q-item-section>
             </q-item>
 
-            <q-item clickable @click="goToMain">
+            <q-item clickable @click="goToMain('模型三')">
               <q-item-section>
                 <q-item-label>模型三</q-item-label>
               </q-item-section>
@@ -39,11 +39,14 @@
 
 <script lang="ts" setup>
 import { useRouter } from 'vue-router';
+import { useModelStore } from 'src/stores/store'
 
+const modelStore = useModelStore();
 const router = useRouter();
 
-function goToMain() {
-  router.push('/main');
+function goToMain(model: string) {
+  modelStore.setModelName(model);
+  router.push({ path: '/main/index' });
 }
 </script>
 

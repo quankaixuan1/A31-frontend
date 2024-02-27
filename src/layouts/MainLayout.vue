@@ -16,7 +16,7 @@
           <q-avatar size="60px" class="img">
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
           </q-avatar>
-          <q-select
+          <!-- <q-select
             class="select"
             bg-color="white"
             rounded
@@ -24,14 +24,31 @@
             v-model="model"
             :options="options"
             label="当前模型"
-          />
+          /> -->
+          <q-field
+            dark
+            class="select"
+            standout
+            :model-value="model"
+            prefix="当前模型:"
+          >
+            <!-- <template v-slot:prepend>
+              <q-icon name="mail" />
+            </template> -->
+
+            <template v-slot:control>
+              <div
+                class="self-center full-width no-outline text-right"
+                tabindex="0"
+              >
+                {{ modelStore.modelName }}
+              </div>
+            </template>
+          </q-field>
         </q-toolbar-title>
-        <q-btn push color="primary" label="首页" size="lg" to="/main"/>
-        <q-btn push color="primary" label="退出" size="lg" to="/"/>
-
-
+        <q-btn push color="primary" label="首页" size="lg" to="/main" />
+        <q-btn push color="primary" label="退出" size="lg" to="/" />
       </q-toolbar>
-
 
       <!-- <q-tabs align="left">
         <q-route-tab to="" label="Page One" />
@@ -59,14 +76,17 @@
 <script setup>
 import { ref } from 'vue';
 import SideNavigation from 'src/components/SideNavigation.vue';
+import { useModelStore } from 'src/stores/store';
 
 const leftDrawerOpen = ref(false);
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 }
 
-const model = ref(null);
-const options = ref(['模型一', '模型二', '模型三']);
+const modelStore = useModelStore();
+
+// const model = ref(null);
+// const options = ref(['模型一', '模型二', '模型三']);
 </script>
 
 <style>
@@ -85,11 +105,11 @@ const options = ref(['模型一', '模型二', '模型三']);
   margin-bottom: 20px;
 }
 
-.select .q-field__native{
-  font-size: 20px
+.select .q-field__native {
+  font-size: 20px;
 }
-.select .q-field__label{
+.select .q-field__label {
   margin-bottom: 1px;
-  font-size: 20px
+  font-size: 20px;
 }
 </style>

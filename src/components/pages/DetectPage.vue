@@ -13,9 +13,5 @@
 import ChatRoom from 'src/components/ChatRoom.vue';
 </script>
 <style>
-.top-navigation .q-tab__label {
-  margin: 20px;
-  font-weight: 500;
-  font-size: 20px; /* 调整文字大小 */
-}
+
 </style>

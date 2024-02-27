@@ -9,7 +9,17 @@ const routes: RouteRecordRaw[] = [
     path: '/main',
     component: () => import('layouts/MainLayout.vue'), // MainLayout作为一个独立的页面
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') },
+      {
+        path: 'index',
+        component: () => import('pages/IndexPage.vue'),
+        children: [
+          {
+            path: 'test',
+            component: () =>
+              import('src/components/pages/smallpages/ApiTest.vue'),
+          },
+        ],
+      },
       {
         path: 'detect',
         component: () => import('src/components/pages/DetectPage.vue'),

@@ -3,7 +3,7 @@
     <div class="fit column no-wrap justify-center items-center content-center q-gutter-y-xl">
 
       <div class="fit row no-wrap justify-center items-center content-center q-gutter-xl">
-        <img src="src\assets\quasar-logo-vertical.svg" alt="Logo" class="logo">
+        <img src="/img/quasar-logo-vertical.svg" alt="Logo" class="logo">
         <div class="text-h1">产品名称</div>
 
       </div>

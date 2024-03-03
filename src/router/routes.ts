@@ -23,6 +23,38 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'detect',
         component: () => import('src/components/pages/DetectPage.vue'),
+        children: [
+          {
+            path: 'truthfulness',
+            component: () =>
+              import('src/components/pages/DefectPages/TruthfulnessPage.vue'),
+          },
+          {
+            path: 'safety',
+            component: () =>
+              import('src/components/pages/DefectPages/SafetyPage.vue'),
+          },
+          {
+            path: 'fairness',
+            component: () =>
+              import('src/components/pages/DefectPages/FairnessPage.vue'),
+          },
+          {
+            path: 'robustness',
+            component: () =>
+              import('src/components/pages/DefectPages/RobustnessPage.vue'),
+          },
+          {
+            path: 'privacy',
+            component: () =>
+              import('src/components/pages/DefectPages/PrivacyPage.vue'),
+          },
+          {
+            path: 'ethics',
+            component: () =>
+              import('src/components/pages/DefectPages/EthicsPage.vue'),
+          },
+        ],
       },
       {
         path: 'defense',
@@ -31,6 +63,13 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'log',
         component: () => import('src/components/pages/DetectLog.vue'),
+        children: [
+          {
+            path: 'graph',
+            component: () =>
+              import('src/components/pages/DetectLog/DataGraph.vue'),
+          },
+        ],
       },
     ],
   },

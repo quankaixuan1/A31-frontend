@@ -46,7 +46,7 @@
             </template>
           </q-field>
         </q-toolbar-title>
-        <q-btn push color="primary" label="首页" size="lg" to="/main" />
+        <!-- <q-btn push color="primary" label="首页" size="lg" to="/main" /> -->
         <q-btn push color="primary" label="退出" size="lg" to="/" />
       </q-toolbar>
 
@@ -93,6 +93,7 @@ const modelStore = useModelStore();
 .center {
   padding-top: 50%;
   /* background-color: black; */
+
 }
 .img {
   margin-top: 20px;

@@ -1,5 +1,5 @@
 <template>
-  <h1>test</h1>
+  <h1>Robustness</h1>
   <div>
     <button @click="fetchData">Get data</button>
     <div v-if="data">
@@ -10,18 +10,20 @@
     </ul> -->
   </div>
   <button @click="fetchData">Get message</button>
+  <chat-room />
 
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import ChatRoom from 'src/components/ChatRoom.vue';
 
 const data = ref(null);
 
 function fetchData() {
   axios
-    .get('https://jsonplaceholder.typicode.com/users/3')
+    .get('https://jsonplaceholder.typicode.com/users/1')
     .then((response) => {
       data.value = response.data;
     })

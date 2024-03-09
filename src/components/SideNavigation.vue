@@ -1,5 +1,5 @@
 <template v-slot:before>
-  <q-tabs vertical class="text-teal side-navigation">
+  <q-tabs vertical class="text-blue-10 side-navigation">
     <q-route-tab
       class="in"
       name="home"
@@ -31,9 +31,16 @@
   </q-tabs>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+
+</script>
 
 <style>
+.side-navigation {
+  position: fixed;
+  width: 100%;
+  padding-top: 50%;
+}
 .side-navigation .q-tab {
   padding: 40px;
 }

@@ -1,6 +1,6 @@
 <template>
-  <q-layout view="lHh lpR lFf">
-    <q-header class="bg-primary text-white" height-hint="98">
+  <q-layout view="HHh LpR lFf">
+    <q-header elevated class="bg-primary text-white" height-hint="98">
       <!-- elevated 添加阴影（不要写在class里） -->
       <q-toolbar>
         <q-btn
@@ -32,9 +32,9 @@
             :model-value="model"
             prefix="当前模型:"
           >
-            <!-- <template v-slot:prepend>
+            <template v-slot:prepend>
               <q-icon name="mail" />
-            </template> -->
+            </template>
 
             <template v-slot:control>
               <div
@@ -49,36 +49,85 @@
         <!-- <q-btn push color="primary" label="首页" size="lg" to="/main" /> -->
         <q-btn push color="primary" label="退出" size="lg" to="/" />
       </q-toolbar>
-
       <!-- <q-tabs align="left">
         <q-route-tab to="" label="Page One" />
         <q-route-tab to="" label="Page Two" />
         <q-route-tab to="" label="Page Three" />
       </q-tabs> -->
+
+      <q-tabs
+        class="top-navigation home-bar"
+        v-show="currentTabBar === 'home-bar'"
+        v-if="showTabs"
+      >
+        <!-- <q-tabs align="left" class="bg-primary text-white shadow-6 top-navigation"> -->
+        <q-route-tab to="" label="资讯" />
+        <q-route-tab to="" label="图表" />
+        <q-route-tab to="/main/index/test" label="测试" />
+      </q-tabs>
+
+      <q-tabs
+        class="top-navigation detect-bar"
+        v-show="currentTabBar === 'detect-bar'"
+        v-if="showTabs"
+      >
+        <q-route-tab to="/main/detect/truthfulness" label="真实性" />
+        <q-route-tab to="/main/detect/safety" label="安全性" />
+        <q-route-tab to="/main/detect/fairness" label="公平性" />
+        <q-route-tab to="/main/detect/robustness" label="鲁棒性" />
+        <q-route-tab to="/main/detect/privacy" label="隐私" />
+        <q-route-tab to="/main/detect/ethics" label="伦理" />
+      </q-tabs>
+
+      <q-tabs
+        class="top-navigation defense-bar"
+        v-show="currentTabBar === 'defense-bar'"
+        v-if="showTabs"
+      >
+        <q-route-tab to="" label="内部页面一" />
+        <q-route-tab to="" label="内部页面二" />
+        <q-route-tab to="" label="内部页面三" />
+      </q-tabs>
+
+      <q-tabs
+        class="top-navigation log-bar"
+        v-show="currentTabBar === 'log-bar'"
+        v-if="showTabs"
+      >
+        <q-route-tab to="/main/log/table" label="漏洞" />
+        <q-route-tab to="/main/log/graph" label="图表" />
+        <q-route-tab to="" label="版本" />
+      </q-tabs>
     </q-header>
 
     <q-drawer
       show-if-above
       v-model="leftDrawerOpen"
       side="left"
+      persistent
+      overlay
       bordered
       width="200"
     >
-      <SideNavigation class="center"></SideNavigation>
+      <SideNavigation></SideNavigation>
     </q-drawer>
 
-    <q-page-container>
+    <q-page-container
+      class="fit row wrap justify-center items-start"
+    >
       <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch, nextTick,onMounted } from 'vue';
 import SideNavigation from 'src/components/SideNavigation.vue';
 import { useModelStore } from 'src/stores/store';
+import { useRoute } from 'vue-router';
+import { useQuasar } from 'quasar';
 
-const leftDrawerOpen = ref(false);
+const leftDrawerOpen = ref(true);
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 }
@@ -87,13 +136,37 @@ const modelStore = useModelStore();
 
 // const model = ref(null);
 // const options = ref(['模型一', '模型二', '模型三']);
+
+const route = useRoute();
+const currentTabBar = ref('home-bar'); // 默认显示的顶部导航栏
+const showTabs = ref(true); // 控制 q-tabs 显示的变量
+
+watch(
+  () => route.path,
+  (newPath) => {
+    showTabs.value = false
+    nextTick(() => {
+      // 在下一个 tick 显示 q-tabs
+      showTabs.value = true;
+      if (newPath.startsWith('/main/index')) {
+        currentTabBar.value = 'home-bar';
+      } else if (newPath.startsWith('/main/detect')) {
+        currentTabBar.value = 'detect-bar';
+      } else if (newPath.startsWith('/main/defense')) {
+        currentTabBar.value = 'defense-bar';
+      } else if (newPath.startsWith('/main/log')) {
+        currentTabBar.value = 'log-bar';
+      }
+    });
+  }
+);
 </script>
 
 <style>
-.center {
-  padding-top: 50%;
-  /* background-color: black; */
-
+.top-navigation .q-tab__label {
+  margin: 20px;
+  font-weight: 500;
+  font-size: 20px; /* 调整文字大小 */
 }
 .img {
   margin-top: 20px;

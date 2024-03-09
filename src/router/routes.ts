@@ -69,6 +69,11 @@ const routes: RouteRecordRaw[] = [
             component: () =>
               import('src/components/pages/DetectLog/DataGraph.vue'),
           },
+          {
+            path: 'table',
+            component: () =>
+              import('src/components/pages/DetectLog/DataTable.vue'),
+          },
         ],
       },
     ],

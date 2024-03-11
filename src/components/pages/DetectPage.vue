@@ -1,13 +1,16 @@
 <template>
-  <div>
+  <div v-if="!isChildRoute">
     <h1>DetectPage</h1>
   </div>
-  <!-- <chat-room /> -->
   <router-view />
 </template>
 <script setup>
-// import ChatRoom from 'src/components/ChatRoom.vue';
-</script>
-<style>
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 
-</style>
+const route = useRoute();
+const isChildRoute = computed(() => {
+  return route.matched.length > 2;
+});
+</script>
+<style></style>

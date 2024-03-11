@@ -1,18 +1,17 @@
 <template>
-  <div class="topppp">
-  </div>
-  <div>
+  <div v-if="!isChildRoute">
     <h1>Log</h1>
   </div>
   <router-view />
 </template>
-<script setup></script>
+<script setup>
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+const isChildRoute = computed(() => {
+  return route.matched.length > 2;
+});</script>
 <style>
-.toppp {
-  position: fixed;
-  width: 100%;
-}
-.topppp{
-  height: 82px;
-}
+
 </style>

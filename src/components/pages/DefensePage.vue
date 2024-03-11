@@ -2,8 +2,9 @@
 
   <div>
     <h1>DefensePage</h1>
+    <h1>功能开发中</h1>
   </div>
-  <chat-room/>
+
 </template>
 <script setup>
 import ChatRoom from 'src/components/ChatRoom.vue';

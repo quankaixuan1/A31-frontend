@@ -1,6 +1,6 @@
 <template>
   <q-layout view="HHh LpR lFf">
-    <q-header elevated class="bg-primary text-white" height-hint="98">
+    <q-header reveal elevated class="bg-primary text-white" height-hint="98">
       <!-- elevated 添加阴影（不要写在class里） -->
       <q-toolbar>
         <q-btn
@@ -113,23 +113,53 @@
     </q-drawer>
 
     <q-page-container
-      class="fit row wrap justify-center items-start"
+      class="fit row wrap justify-center items-center container-body"
     >
-      <router-view />
+      <router-view v-slot="{ Component }">
+        <transition
+          appear
+          enter-active-class="animated fadeIn"
+          leave-active-class="animated fadeOut"
+        >
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </q-page-container>
   </q-layout>
+  <q-btn
+    class="menu-button"
+    :class="{ 'move-right': isMoved }"
+    color="blue-10"
+    :icon="iconName"
+    fab
+    round
+    @click="leftDrawerAndPositon"
+  >
+  </q-btn>
+  <q-fab> </q-fab>
 </template>
 
 <script setup>
-import { ref, watch, nextTick,onMounted } from 'vue';
+import { ref, watch, nextTick } from 'vue';
 import SideNavigation from 'src/components/SideNavigation.vue';
 import { useModelStore } from 'src/stores/store';
 import { useRoute } from 'vue-router';
-import { useQuasar } from 'quasar';
 
 const leftDrawerOpen = ref(true);
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
+}
+
+const isMoved = ref(false);
+const iconName = ref('close');
+function togglePosition() {
+  isMoved.value = !isMoved.value;
+  iconName.value = isMoved.value ? 'keyboard_arrow_right' : 'close';
+}
+
+function leftDrawerAndPositon() {
+  toggleLeftDrawer();
+  togglePosition();
 }
 
 const modelStore = useModelStore();
@@ -144,7 +174,7 @@ const showTabs = ref(true); // 控制 q-tabs 显示的变量
 watch(
   () => route.path,
   (newPath) => {
-    showTabs.value = false
+    showTabs.value = false;
     nextTick(() => {
       // 在下一个 tick 显示 q-tabs
       showTabs.value = true;
@@ -185,5 +215,20 @@ watch(
 .select .q-field__label {
   margin-bottom: 1px;
   font-size: 20px;
+}
+
+.menu-button {
+  position: fixed;
+  top: 300px;
+  left: 220px;
+  transition: transform 0.3s ease;
+}
+.move-right {
+  transform: translateX(-240px);
+}
+
+.container-body {
+  padding-left: 20%;
+  padding-right: 20%;
 }
 </style>

@@ -1,8 +1,10 @@
 <template>
-  <h1>table</h1>
-  <div>
+
+  <div class="inner-box">
+    <h1>table</h1>
+    <LogData></LogData>
   </div>
-  <LogData></LogData>
+
 
 </template>
 

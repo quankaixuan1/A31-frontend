@@ -1,20 +1,20 @@
 <template>
-  <q-layout view="HHh LpR lFf">
+  <q-layout view="hHh LpR lFf">
     <q-header reveal elevated class="bg-primary text-white" height-hint="98">
       <!-- elevated 添加阴影（不要写在class里） -->
       <q-toolbar>
-        <q-btn
+        <!-- <q-btn
           dense
           flat
           round
           icon="menu"
           size="lg"
           @click="toggleLeftDrawer"
-        />
+        /> -->
 
         <q-toolbar-title class="row">
-          <q-avatar size="60px" class="img">
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
+          <q-avatar size="56px" class="img">
+            <img src="/img/4.png" />
           </q-avatar>
           <!-- <q-select
             class="select"
@@ -47,13 +47,15 @@
           </q-field>
         </q-toolbar-title>
         <!-- <q-btn push color="primary" label="首页" size="lg" to="/main" /> -->
-        <q-btn push color="primary" label="退出" size="lg" to="/" />
+        <q-btn push color="primary" label="退出" size="md" to="/" />
       </q-toolbar>
       <!-- <q-tabs align="left">
         <q-route-tab to="" label="Page One" />
         <q-route-tab to="" label="Page Two" />
         <q-route-tab to="" label="Page Three" />
       </q-tabs> -->
+
+      <q-separator inset dark />
 
       <q-tabs
         class="top-navigation home-bar"
@@ -107,7 +109,7 @@
       persistent
       overlay
       bordered
-      width="200"
+      width="130"
     >
       <SideNavigation></SideNavigation>
     </q-drawer>
@@ -116,11 +118,7 @@
       class="fit row wrap justify-center items-center container-body"
     >
       <router-view v-slot="{ Component }">
-        <transition
-          appear
-          enter-active-class="animated fadeIn"
-          leave-active-class="animated fadeOut"
-        >
+        <transition name="slide-up">
           <component :is="Component" />
         </transition>
       </router-view>
@@ -132,15 +130,15 @@
     color="blue-10"
     :icon="iconName"
     fab
+    flat
     round
     @click="leftDrawerAndPositon"
   >
   </q-btn>
-  <q-fab> </q-fab>
 </template>
 
 <script setup>
-import { ref, watch, nextTick } from 'vue';
+import { ref, watch, nextTick, onMounted } from 'vue';
 import SideNavigation from 'src/components/SideNavigation.vue';
 import { useModelStore } from 'src/stores/store';
 import { useRoute } from 'vue-router';
@@ -151,10 +149,12 @@ function toggleLeftDrawer() {
 }
 
 const isMoved = ref(false);
-const iconName = ref('close');
+const iconName = ref('keyboard_arrow_left');
 function togglePosition() {
   isMoved.value = !isMoved.value;
-  iconName.value = isMoved.value ? 'keyboard_arrow_right' : 'close';
+  iconName.value = isMoved.value
+    ? 'keyboard_arrow_right'
+    : 'keyboard_arrow_left';
 }
 
 function leftDrawerAndPositon() {
@@ -171,6 +171,22 @@ const route = useRoute();
 const currentTabBar = ref('home-bar'); // 默认显示的顶部导航栏
 const showTabs = ref(true); // 控制 q-tabs 显示的变量
 
+const updateTabBar = (path) => {
+  if (path.startsWith('/main/index')) {
+    currentTabBar.value = 'home-bar';
+  } else if (path.startsWith('/main/detect')) {
+    currentTabBar.value = 'detect-bar';
+  } else if (path.startsWith('/main/defense')) {
+    currentTabBar.value = 'defense-bar';
+  } else if (path.startsWith('/main/log')) {
+    currentTabBar.value = 'log-bar';
+  }
+};
+
+onMounted(async () => {
+  updateTabBar(route.path);
+});
+
 watch(
   () => route.path,
   (newPath) => {
@@ -178,15 +194,7 @@ watch(
     nextTick(() => {
       // 在下一个 tick 显示 q-tabs
       showTabs.value = true;
-      if (newPath.startsWith('/main/index')) {
-        currentTabBar.value = 'home-bar';
-      } else if (newPath.startsWith('/main/detect')) {
-        currentTabBar.value = 'detect-bar';
-      } else if (newPath.startsWith('/main/defense')) {
-        currentTabBar.value = 'defense-bar';
-      } else if (newPath.startsWith('/main/log')) {
-        currentTabBar.value = 'log-bar';
-      }
+      updateTabBar(newPath);
     });
   }
 );
@@ -194,19 +202,21 @@ watch(
 
 <style>
 .top-navigation .q-tab__label {
-  margin: 20px;
+  margin: 15px;
   font-weight: 500;
-  font-size: 20px; /* 调整文字大小 */
+  font-size: 15px;
 }
 .img {
-  margin-top: 20px;
+  margin: 10px;
+  /* margin-top: 20px; */
   margin-right: 20px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 .select {
   width: 300px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  /* height: 10px; */
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .select .q-field__native {
@@ -219,16 +229,16 @@ watch(
 
 .menu-button {
   position: fixed;
-  top: 300px;
-  left: 220px;
+  top: 402px;
+  left: 110px;
   transition: transform 0.3s ease;
 }
 .move-right {
-  transform: translateX(-240px);
+  transform: translateX(-130px);
 }
 
 .container-body {
-  padding-left: 20%;
-  padding-right: 20%;
+  /* padding-left: 10%;
+  padding-right: 10%; */
 }
 </style>

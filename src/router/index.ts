@@ -34,5 +34,24 @@ export default route(function (/* { store, ssrContext } */) {
     history: createHistory(process.env.VUE_ROUTER_BASE),
   });
 
+  Router.afterEach((to, from) => {
+    if (from.path === '/' && to.path === '/main/index') {
+      const isReloaded = sessionStorage.getItem('isProfileReloaded');
+      if (!isReloaded) {
+        // 设置标记
+        sessionStorage.setItem('isProfileReloaded', 'true');
+        // 刷新页面
+        window.location.reload();
+      } else {
+        // 如果标记存在，说明已经刷新过，继续导航
+        // next();
+      }
+    } else {
+      // 如果不是从/about到/about/profile的跳转，删除标记
+      sessionStorage.removeItem('isProfileReloaded');
+      // next();
+    }
+  });
+
   return Router;
 });

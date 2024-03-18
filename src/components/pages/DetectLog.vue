@@ -1,6 +1,8 @@
 <template>
   <div v-if="!isChildRoute">
-    <h1>Log</h1>
+    <div class="inner-box">
+      <h1>Log</h1>
+    </div>
   </div>
   <router-view />
 </template>

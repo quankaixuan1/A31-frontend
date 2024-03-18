@@ -1,5 +1,5 @@
 <template v-slot:before>
-  <q-tabs vertical class="text-blue-10 side-navigation">
+  <q-tabs vertical indicator-color="white" class="text-blue-10 side-navigation">
     <q-route-tab
       class="in"
       name="home"
@@ -39,19 +39,20 @@
 .side-navigation {
   position: fixed;
   width: 100%;
-  padding-top: 50%;
+  padding-top: 11%;
 }
 .side-navigation .q-tab {
-  padding: 40px;
+  padding: 30px;
 }
+/* 调整图标大小 */
 .in .q-tab__icon {
-  margin: 20px;
+  margin: 10px;
 
-  font-size: 60px; /* 调整图标大小 */
+  font-size: 40px;
 }
-
+/* 调整文字大小 */
 .side-navigation .q-tab__label {
   font-weight: 500;
-  font-size: 20px; /* 调整文字大小 */
+  font-size: 15px;
 }
 </style>

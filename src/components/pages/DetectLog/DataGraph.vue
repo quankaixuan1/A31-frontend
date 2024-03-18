@@ -1,9 +1,10 @@
 <template>
+  <div class="inner-box">
   <h1>Graph</h1>
   <div class="charts-container">
     <div ref="pieChartRef" class="chart"></div>
     <div ref="barChartRef" class="chart"></div>
-  </div>
+  </div></div>
 </template>
 
 <script setup>

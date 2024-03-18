@@ -1,6 +1,6 @@
 <template>
   <h1>Fairness</h1>
-  <chat-room />
+
 
 </template>
 

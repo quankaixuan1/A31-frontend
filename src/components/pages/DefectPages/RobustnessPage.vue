@@ -1,7 +1,6 @@
 <template>
   <h1>Robustness</h1>
 
-  <chat-room />
 
 </template>
 

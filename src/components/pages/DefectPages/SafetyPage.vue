@@ -1,6 +1,8 @@
 <template>
+    <div class="inner-box">
+
   <h1>Safety</h1>
-  <chat-room />
+</div>
 
 </template>
 

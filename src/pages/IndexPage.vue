@@ -28,7 +28,7 @@
 
     <q-parallax :height="200" :speed="0.5">
       <template v-slot:media>
-        <img src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <img src="https://cdn.quasar.dev/img/mountains.jpg" />
       </template>
       <div class="text-white text-h2 inner-subtitle">威胁防御</div>
     </q-parallax>
@@ -43,7 +43,7 @@
 
     <q-parallax :height="200" :speed="0.5">
       <template v-slot:media>
-        <img src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <img src="https://picsum.photos/id/400/2560/1600" />
       </template>
       <div class="text-white text-h2 inner-subtitle">强适应性</div>
     </q-parallax>
@@ -58,7 +58,7 @@
 
     <q-parallax :height="200" :speed="0.5">
       <template v-slot:media>
-        <img src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <img src="https://picsum.photos/id/1/1920/1080" />
       </template>
       <div class="text-white text-h2 inner-subtitle">软件集成</div>
     </q-parallax>
@@ -73,7 +73,7 @@
 
     <q-parallax :height="200" :speed="0.5">
       <template v-slot:media>
-        <img src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <img src="https://picsum.photos/id/11/2560/1600" />
       </template>
       <div class="text-white text-h2 inner-subtitle">应用场景</div>
     </q-parallax>

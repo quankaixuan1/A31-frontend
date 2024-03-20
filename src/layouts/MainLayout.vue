@@ -47,6 +47,20 @@
           </q-field>
         </q-toolbar-title>
         <!-- <q-btn push color="primary" label="首页" size="lg" to="/main" /> -->
+
+        <q-select
+          v-model="locale"
+          :options="localeOptions"
+          label="Quasar Language"
+          dense
+          borderless
+          emit-value
+          map-options
+          options-dense
+          dark
+          style="min-width: 150px; margin-right: 20px"
+        />
+
         <q-btn push color="primary" label="退出" size="md" to="/" />
       </q-toolbar>
       <!-- <q-tabs align="left">
@@ -115,7 +129,7 @@
     </q-drawer>
 
     <q-page-container
-      class="fit row wrap justify-center items-center container-body"
+      class="fit row wrap justify-center items-center"
     >
       <router-view v-slot="{ Component }">
         <transition name="slide-up">
@@ -127,7 +141,7 @@
   <q-btn
     class="menu-button"
     :class="{ 'move-right': isMoved }"
-    color="blue-10"
+    color="orange-7"
     :icon="iconName"
     fab
     flat
@@ -142,6 +156,7 @@ import { ref, watch, nextTick, onMounted } from 'vue';
 import SideNavigation from 'src/components/SideNavigation.vue';
 import { useModelStore } from 'src/stores/store';
 import { useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 
 const leftDrawerOpen = ref(true);
 function toggleLeftDrawer() {
@@ -198,6 +213,12 @@ watch(
     });
   }
 );
+
+const { locale } = useI18n({ useScope: 'global' });
+const localeOptions = [
+  { value: 'en-US', label: 'English' },
+  { value: 'zh-CN', label: '中文' },
+];
 </script>
 
 <style>
@@ -235,10 +256,5 @@ watch(
 }
 .move-right {
   transform: translateX(-130px);
-}
-
-.container-body {
-  /* padding-left: 10%;
-  padding-right: 10%; */
 }
 </style>

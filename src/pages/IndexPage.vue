@@ -1,13 +1,13 @@
 <template>
   <div v-if="!isChildRoute">
     <div class="inner-box">
-      <div class="text-h1 inner-headline">语镜</div>
-      <q-separator dark />
+      <div class="text-h2 inner-headline">语镜</div>
+      <q-separator color="primary" />
 
       <div class="text-h6">大语言模型安全 检测&防御 系统</div>
       <br />
       <div class="text-body1">
-        在人工智能飞速发展的今天，大语言模型（LLM）已成为众多应用的核心技术。然而，随着其应用范围的扩大，安全问题也日益凸显。LMSafeGuard是一款专为大语言模型设计的安全检测和防御系统，旨在为企业和开发者提供全方位的安全解决方案
+        在人工智能飞速发展的今天，大语言模型（LLM）已成为众多应用的核心技术。然而，随着其应用范围的扩大，安全问题也日益凸显。语镜是一款专为大语言模型设计的安全检测和防御系统，旨在为企业和开发者提供全方位的安全解决方案
       </div>
     </div>
 
@@ -171,8 +171,8 @@ const isChildRoute = computed(() => {
   padding: 12px
   padding-left: 150px
   padding-right: 150px
-  color: white
-  background-color: rgba(0, 0, 0, .3)
+  //color: white
+  //background-color: rgba(0, 0, 0, .3)
 
 .inner-subtitle
   padding-bottom: 10px

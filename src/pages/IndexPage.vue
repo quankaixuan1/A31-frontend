@@ -103,7 +103,7 @@
             right: 0,
           }"
         >
-          <img src="/public/img/4.png" style="width: 150px; height: 150px" />
+          <img src="src/assets/4.png" style="width: 150px; height: 150px" />
           <div class="text-h3 text-white text-center">语 镜</div>
           <div class="text-h6 text-grey-3 text-center">v{{ $q.version }}</div>
         </div>
@@ -165,14 +165,7 @@ const isChildRoute = computed(() => {
 .inner-headline
   padding-top: 50px
 
-.inner-box
-  //text-align: center
-  width: 100vw
-  padding: 12px
-  padding-left: 150px
-  padding-right: 150px
-  //color: white
-  //background-color: rgba(0, 0, 0, .3)
+
 
 .inner-subtitle
   padding-bottom: 10px

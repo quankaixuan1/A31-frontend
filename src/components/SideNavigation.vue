@@ -40,6 +40,8 @@
   position: fixed;
   width: 100%;
   padding-top: 11%;
+  padding-bottom: 11%;
+
 }
 .side-navigation .q-tab {
   padding: 30px;

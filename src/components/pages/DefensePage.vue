@@ -16,29 +16,57 @@
         />
         <!-- 发送按钮 -->
         <div class="flex q-gutter-md">
-        <q-btn
-          label="发送问题"
-          color="primary"
-          @click="sendQuestion"
-          :disabled="!selectedQuestion"
-        />
-        <q-btn label="变换" color="red-10" />
-      </div>
-        <!-- 消息显示区 -->
-        <div class="q-mt-md" style="overflow-y: auto">
-          <q-chat-message
-
-            v-for="(message, index) in conversation"
-            :key="index"
-            :text="[message.text]"
-            :name="message.sender === 'user' ? 'You' : 'Robot'"
-            :avatar="message.sender === 'user' ? userAvatar : robotAvatar"
-            :sent="message.sender === 'user'"
-            :text-color="message.sender === 'user'?'':'white'"
-
-            :bg-color="message.sender === 'user' ? 'amber-7' : 'primary'"
-
+          <q-btn
+            label="发送问题"
+            color="primary"
+            @click="sendQuestion"
+            :disabled="!selectedQuestion"
           />
+          <q-btn label="变换" color="red-10" />
+        </div>
+        <!-- 消息显示区 -->
+        <div
+          class="q-mt-md"
+          style="
+            overflow-y: auto;
+            padding: 10px;
+            border-radius: 4px;
+            border: 2px solid grey;
+          "
+        >
+          <q-splitter v-model="splitterModel" :limits="[40, 60]">
+            <template v-slot:before>
+              <div class="q-pa-md">
+                <div class="text-h4 q-mb-md">防御前</div>
+                <q-chat-message
+                  v-for="(message, index) in conversation"
+                  :key="index"
+                  :text="[message.text]"
+                  :name="message.sender === 'user' ? 'You' : 'Robot'"
+                  :avatar="message.sender === 'user' ? userAvatar : robotAvatar"
+                  :sent="message.sender === 'user'"
+                  :text-color="message.sender === 'user' ? '' : 'white'"
+                  :bg-color="message.sender === 'user' ? 'amber-7' : 'primary'"
+                />
+              </div>
+            </template>
+
+            <template v-slot:after>
+              <div class="q-pa-md">
+                <div class="text-h4 q-mb-md">防御后</div>
+                <q-chat-message
+                  v-for="(message, index) in conversation"
+                  :key="index"
+                  :text="[message.text]"
+                  :name="message.sender === 'user' ? 'You' : 'Robot'"
+                  :avatar="message.sender === 'user' ? userAvatar : robotAvatar"
+                  :sent="message.sender === 'user'"
+                  :text-color="message.sender === 'user' ? '' : 'white'"
+                  :bg-color="message.sender === 'user' ? 'amber-7' : 'primary'"
+                />
+              </div>
+            </template>
+          </q-splitter>
         </div>
       </div>
     </div>
@@ -64,8 +92,8 @@ const questions = ref([
 const selectedQuestion = ref(null);
 const conversation = ref([]);
 
-const userAvatar = 'public/img/avatar.webp'; // Example avatar image
-const robotAvatar = 'public/img/robot.webp'; // Example avatar image
+const userAvatar = 'src/assets/avatar.webp'; // Example avatar image
+const robotAvatar = 'src/assets/robot.webp'; // Example avatar image
 
 const sendQuestion = () => {
   if (selectedQuestion.value) {
@@ -84,8 +112,12 @@ const sendQuestion = () => {
   }
 };
 
-
+const splitterModel = ref(50);
 </script>
 <style>
-
+/* .text-detail {
+  padding: 10px;
+  border-radius: 4px;
+  border: 2px solid ;
+} */
 </style>

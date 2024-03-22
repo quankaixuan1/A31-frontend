@@ -92,8 +92,8 @@ const questions = ref([
 const selectedQuestion = ref(null);
 const conversation = ref([]);
 
-const userAvatar = 'src/assets/avatar.webp'; // Example avatar image
-const robotAvatar = 'src/assets/robot.webp'; // Example avatar image
+const userAvatar = '~assets/avatar.webp'; // Example avatar image
+const robotAvatar = '~assets/robot.webp'; // Example avatar image
 
 const sendQuestion = () => {
   if (selectedQuestion.value) {

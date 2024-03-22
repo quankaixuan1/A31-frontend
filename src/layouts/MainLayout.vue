@@ -14,7 +14,7 @@
 
         <q-toolbar-title class="row">
           <q-avatar size="56px" class="img">
-            <img src="/img/4.png" />
+            <img src="~assets/4.png" />
           </q-avatar>
           <!-- <q-select
             class="select"

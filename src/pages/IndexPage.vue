@@ -103,7 +103,7 @@
             right: 0,
           }"
         >
-          <img src="src/assets/4.png" style="width: 150px; height: 150px" />
+          <img src="~assets/4.png" style="width: 150px; height: 150px" />
           <div class="text-h3 text-white text-center">语 镜</div>
           <div class="text-h6 text-grey-3 text-center">v{{ $q.version }}</div>
         </div>

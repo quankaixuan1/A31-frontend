@@ -1,7 +1,7 @@
 <template>
   <div class="centered-div">
     <video autoplay loop muted class="background-video">
-      <source src="src/assets/BMI_Login.mp4" type="video/mp4" />
+      <source src="~assets/BMI_Login.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     <div
@@ -10,7 +10,7 @@
       <div
         class="fit row no-wrap justify-center items-center content-center q-gutter-xl"
       >
-        <img src="src/assets/4.png" alt="Logo" class="logo" />
+        <img src="~assets/4.png" alt="Logo" class="logo" />
         <div class="text-h1 text-grey-1">语 镜</div>
       </div>
 

@@ -85,7 +85,7 @@
       </q-tabs>
     </q-header>
 
-    <q-drawer
+    <!-- <q-drawer
       show-if-above
       v-model="leftDrawerOpen"
       side="left"
@@ -94,7 +94,7 @@
       bordered
       width="130"
     >
-    </q-drawer>
+    </q-drawer> -->
 
     <q-page-container class="fit row wrap justify-center items-center" :class="bgColorClass">
       <div v-if="!isChildRoute" class="home-page">
@@ -107,7 +107,7 @@
       </router-view>
     </q-page-container>
   </q-layout>
-  <q-btn
+  <!-- <q-btn
     class="menu-button"
     :class="{ 'move-right': isMoved }"
     color="orange-7"
@@ -117,7 +117,7 @@
     round
     @click="leftDrawerAndPositon"
   >
-  </q-btn>
+  </q-btn> -->
 </template>
 
 <script setup>

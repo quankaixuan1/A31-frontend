@@ -75,6 +75,8 @@
 <script setup>
 import { ref } from 'vue';
 import { QSelect, QBtn, QChatMessage } from 'quasar';
+import userAvatar from '../../assets/avatar.webp';
+import robotAvatar from '../../assets/robot.webp';
 
 const questions = ref([
   { label: "What's the weather like?", value: "What's the weather like?" },
@@ -92,8 +94,11 @@ const questions = ref([
 const selectedQuestion = ref(null);
 const conversation = ref([]);
 
-const userAvatar = '~assets/avatar.webp'; // Example avatar image
-const robotAvatar = '~assets/robot.webp'; // Example avatar image
+// const userAvatar = '~assets/avatar.webp';
+// const robotAvatar = '~assets/robot.webp';
+
+// const userAvatar = require('@/assets/avatar.webp');
+// const robotAvatar = require('@/assets/robot.webp');
 
 const sendQuestion = () => {
   if (selectedQuestion.value) {

@@ -1,8 +1,15 @@
 <template>
   <div class="inner-box">
-    <h2>DefensePage</h2>
+    <div class="row">
+      <div class="text-h1 inner-headline2 col">威胁防御</div>
+      <div class="text-h5 inner-headline3 col">大模型威胁防御模块 …………</div>
+    </div>
+    <q-img src="https://picsum.photos/id/208/2560/1600"></q-img>
+    <br /><br />
+    <div class="text-body1">介绍文字……</div>
+
     <!-- <h1>功能开发中</h1> -->
-    <div style="background-color: white">
+    <div style="background-color: white; border-radius: 8px">
       <div class="q-pa-md">
         <!-- 下拉框选择问题 -->
         <q-select
@@ -75,8 +82,8 @@
 <script setup>
 import { ref } from 'vue';
 import { QSelect, QBtn, QChatMessage } from 'quasar';
-import userAvatar from '../../assets/avatar.webp';
-import robotAvatar from '../../assets/robot.webp';
+import userAvatar from '../assets/avatar.webp';
+import robotAvatar from '../assets/robot.webp';
 
 const questions = ref([
   { label: "What's the weather like?", value: "What's the weather like?" },

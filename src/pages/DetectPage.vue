@@ -1,10 +1,16 @@
 <template>
   <div v-if="!isChildRoute">
-    <br><br>
-
-    <div class="inner-box">
+    <div class="inner-box bg-detect">
+      <div class="row">
+        <div class="text-h1 inner-headline2 col">安全检测</div>
+        <div class="text-h5 inner-headline3 col">
+          大模型安全漏洞检测模块 从六个维度进行 检测 & 评估
+        </div>
+      </div>
+      <q-img src="https://picsum.photos/id/250/2560/1600"></q-img>
       <div class="text-body1">
         <!-- &emsp;&emsp; -->
+        <br />
         “语镜”大模型安全漏洞检测模块专注于对大模型内部做全面的安全漏洞检测。<br /><br />
 
         <!-- &emsp;&emsp; -->
@@ -18,89 +24,84 @@
         <div class="flex q-gutter-md">
           <q-btn
             label="Truthfulness"
-            color="primary"
             @click="toggleDetail('detail1')"
             style="width: 100%"
             size="lg"
+            class="bg-detect-r"
           />
           <div
             v-if="showDetails.detail1"
-            class="text-detail q-mt-md"
+            class="text-detail q-mt-md bg-detect-r"
             style="width: 100%"
           >
             这是细节 1 的文本。
           </div>
           <q-btn
             label="Safety"
-            color="primary"
             @click="toggleDetail('detail2')"
             style="width: 100%"
             size="lg"
-
+            class="bg-detect-r"
           />
           <div
             v-if="showDetails.detail2"
-            class="text-detail q-mt-md"
+            class="text-detail q-mt-md bg-detect-r"
             style="width: 100%"
           >
             这是细节 2 的文本。
           </div>
           <q-btn
             label="Fairness"
-            color="primary"
             @click="toggleDetail('detail3')"
             style="width: 100%"
             size="lg"
-
+            class="bg-detect-r"
           />
           <div
             v-if="showDetails.detail3"
-            class="text-detail q-mt-md"
+            class="text-detail q-mt-md bg-detect-r"
             style="width: 100%"
           >
             这是细节 3 的文本。
           </div>
           <q-btn
             label="Robustness"
-            color="primary"
             @click="toggleDetail('detail4')"
             style="width: 100%"
             size="lg"
-
+            class="bg-detect-r"
           />
           <div
             v-if="showDetails.detail4"
-            class="text-detail q-mt-md"
+            class="text-detail q-mt-md bg-detect-r"
             style="width: 100%"
           >
             这是细节 4 的文本。
           </div>
           <q-btn
             label="Privacy"
-            color="primary"
             @click="toggleDetail('detail5')"
             style="width: 100%"
             size="lg"
-
+            class="bg-detect-r"
           />
           <div
             v-if="showDetails.detail5"
-            class="text-detail q-mt-md"
+            class="text-detail q-mt-md bg-detect-r"
             style="width: 100%"
           >
             这是细节 5 的文本。
           </div>
           <q-btn
             label="Machine Ethics"
-            color="primary"
             @click="toggleDetail('detail6')"
             style="width: 100%"
             size="lg"
-
+            class="bg-detect-r"
           />
           <div
             v-if="showDetails.detail6"
-            class="text-detail q-mt-md"
+            class="text-detail q-mt-md bg-detect-r"
             style="width: 100%"
           >
             这是细节 6 的文本。
@@ -108,7 +109,6 @@
         </div>
       </div>
     </div>
-    <h1></h1>
   </div>
   <router-view v-slot="{ Component }">
     <transition name="slide-up">

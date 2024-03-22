@@ -1,50 +1,20 @@
 <template v-slot:before>
-  <q-tabs vertical indicator-color="white" class="text-blue-10 side-navigation">
-    <q-route-tab
-      class="in"
-      name="home"
-      icon="home"
-      label="首页"
-      to="/main/index"
-    />
-    <q-route-tab
-      class="in"
-      name="Detect"
-      icon="manage_search"
-      label="漏洞检测"
-      to="/main/detect"
-    />
-    <q-route-tab
-      class="in"
-      name="Defense"
-      icon="alarm"
-      label="安全防御"
-      to="/main/defense"
-    />
-    <q-route-tab
-      class="in"
-      name="Log"
-      icon="feed"
-      label="系统日志"
-      to="/main/log"
-    />
+  <q-tabs  class="side-navigation">
+    <q-route-tab class="in" name="home" label="首页" to="/index" />
+    <q-route-tab class="in" name="Detect" label="安全检测" to="/detect" />
+    <q-route-tab class="in" name="Defense" label="威胁防御" to="/defense" />
+    <q-route-tab class="in" name="Log" label="系统日志" to="/log" />
   </q-tabs>
 </template>
 
-<script lang="ts" setup>
-
-</script>
+<script lang="ts" setup></script>
 
 <style>
 .side-navigation {
-  position: fixed;
-  width: 100%;
-  padding-top: 11%;
-  padding-bottom: 11%;
-
+  /* position: fixed; */
 }
 .side-navigation .q-tab {
-  padding: 30px;
+  padding: 20px;
 }
 /* 调整图标大小 */
 .in .q-tab__icon {
@@ -54,7 +24,7 @@
 }
 /* 调整文字大小 */
 .side-navigation .q-tab__label {
-  font-weight: 500;
-  font-size: 15px;
+  font-weight: 600;
+  font-size: 18px;
 }
 </style>

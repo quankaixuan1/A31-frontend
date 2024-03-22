@@ -1,18 +1,13 @@
 <template>
   <div class="inner-box">
     <div class="q-pa-md">
-      <q-stepper
-        v-model="step"
-        vertical
-        color="primary"
-        animated
-        class="text-black"
-      >
+      <q-stepper v-model="step" vertical animated class="bg-detect-r">
         <q-step
           :name="1"
           title="下载prompt数据集"
           icon="settings"
           :done="step > 1"
+          color="detect-t"
         >
           将下载完成的数据集输入您的LLM，得到输出的generation
 
@@ -20,13 +15,13 @@
             <q-btn
               icon="download"
               label="下载"
-              color="primary"
+              class="bg-detect"
               style="width: 100px"
               @click="downloadFile"
             ></q-btn>
             <br />
             <br />
-            <q-btn @click="step = 2" color="primary" label="Continue" />
+            <q-btn @click="step = 2" class="bg-detect" label="Continue" />
           </q-stepper-navigation>
         </q-step>
 
@@ -36,6 +31,7 @@
           caption=""
           icon="create_new_folder"
           :done="step > 2"
+          color="detect-t"
         >
           我们将帮助您分析评估您的模型
 
@@ -45,24 +41,19 @@
               label="选择文件"
               filled
               style="width: 175px"
+              color="detect-t"
             />
             <q-btn
               icon="upload"
               label="上传"
-              color="primary"
+              class="bg-detect"
               style="width: 175px"
               @click="uploadFile"
               :disabled="!selectedFile"
             ></q-btn>
             <br /><br />
-            <q-btn @click="step = 4" color="primary" label="Continue" />
-            <q-btn
-              flat
-              @click="step = 1"
-              color="primary"
-              label="Back"
-              class="q-ml-sm"
-            />
+            <q-btn @click="step = 4" class="bg-detect" label="Continue" />
+            <q-btn flat @click="step = 1" label="Back" class="q-ml-sm" />
           </q-stepper-navigation>
         </q-step>
 
@@ -70,18 +61,17 @@
           This step won't show up because it is disabled.
         </q-step> -->
 
-        <q-step :name="4" title="得到评估分数" icon="add_comment">
+        <q-step
+          :name="4"
+          title="得到评估分数"
+          icon="add_comment"
+          color="detect-t"
+        >
           点击完成后 我们会在下方展示您的LLM在这个维度的得分
 
           <q-stepper-navigation>
-            <q-btn color="primary" label="Finish" @click="fetchData" />
-            <q-btn
-              flat
-              @click="step = 2"
-              color="primary"
-              label="Back"
-              class="q-ml-sm"
-            />
+            <q-btn class="bg-detect" label="Finish" @click="fetchData" />
+            <q-btn flat @click="step = 2" label="Back" class="q-ml-sm" />
           </q-stepper-navigation>
         </q-step>
       </q-stepper>

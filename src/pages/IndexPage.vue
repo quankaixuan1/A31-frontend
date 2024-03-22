@@ -90,7 +90,7 @@
 
     <q-parallax>
       <template v-slot:media>
-        <img src="https://cdn.quasar.dev/img/parallax2.jpg" />
+        <img src="https://picsum.photos/id/240/2560/1600" />
       </template>
 
       <template v-slot:content="scope">
@@ -110,48 +110,10 @@
       </template>
     </q-parallax>
   </div>
-
-  <!-- <div style="height: 50px; width: 100px; background-color: blue"></div>
-  <q-option-group
-    v-model="panel"
-    inline
-    :options="[
-      { label: 'Mails', value: 'mails' },
-      { label: 'Alarms', value: 'alarms' },
-      { label: 'Movies', value: 'movies' },
-    ]"
-  />
-  <q-tab-panels v-model="panel" animated class="shadow-2 rounded-borders">
-    <q-tab-panel name="mails">
-      <div class="text-h6">Mails</div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-    </q-tab-panel>
-
-    <q-tab-panel name="alarms">
-      <div class="text-h6">Alarms</div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-    </q-tab-panel>
-
-    <q-tab-panel name="movies">
-      <div class="text-h6">Movies</div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-    </q-tab-panel>
-  </q-tab-panels>
-  <transition-group
-    appear
-    enter-active-class="animated fadeIn"
-    leave-active-class="animated fadeOut"
-  >
-    <p key="text">Lorem Ipsum</p>
-    <q-btn key="email-button" color="secondary" icon="mail" label="Email" />
-  </transition-group> -->
   <router-view />
 </template>
 
 <script setup lang="ts">
-// import { ref } from 'vue';
-// const panel = ref('movies');
-
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 
@@ -161,12 +123,4 @@ const isChildRoute = computed(() => {
   return route.matched.length > 2;
 });
 </script>
-<style lang="sass">
-.inner-headline
-  padding-top: 50px
-
-
-
-.inner-subtitle
-  padding-bottom: 10px
-</style>
+<style lang="sass"></style>

@@ -1,12 +1,12 @@
 import { RouteRecordRaw } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
+  // {
+  //   path: '/',
+  //   component: () => import('pages/SelectModel.vue'), // 选择模型页面作为起始页面
+  // },
   {
     path: '/',
-    component: () => import('pages/SelectModel.vue'), // 选择模型页面作为起始页面
-  },
-  {
-    path: '/main',
     component: () => import('layouts/MainLayout.vue'), // MainLayout作为一个独立的页面
     children: [
       {
@@ -22,7 +22,7 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: 'detect',
-        component: () => import('src/components/pages/DetectPage.vue'),
+        component: () => import('src/pages/DetectPage.vue'),
         children: [
           {
             path: 'truthfulness',
@@ -58,11 +58,11 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: 'defense',
-        component: () => import('src/components/pages/DefensePage.vue'),
+        component: () => import('src/pages/DefensePage.vue'),
       },
       {
         path: 'log',
-        component: () => import('src/components/pages/DetectLog.vue'),
+        component: () => import('src/pages/DetectLog.vue'),
         children: [
           {
             path: 'graph',

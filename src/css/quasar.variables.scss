@@ -12,24 +12,84 @@
 // to match your app's branding.
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 
-$primary   : #1976D2;
-$secondary : #26A69A;
-$accent    : #9C27B0;
+$primary: #1976d2;
 
-$dark      : #1D1D1D;
-$dark-page : #121212;
+$secondary: #26a69a;
+$accent: #9c27b0;
 
-$positive  : #21BA45;
-$negative  : #C10015;
-$info      : #31CCEC;
-$warning   : #F2C037;
+$dark: #1d1d1d;
+$dark-page: #121212;
 
-.inner-box{
+$positive: #21ba45;
+$negative: #c10015;
+$info: #31ccec;
+$warning: #f2c037;
+
+.inner-box {
   //text-align: center;
   width: 100vw;
   padding: 12px;
-  padding-left: 150px;
-  padding-right: 150px;
+  padding-left: 50px;
+  padding-right: 50px;
   //color: white;
 }
 
+.inner-headline {
+  padding-top: 400px;
+  padding-bottom: 10px;
+}
+.inner-headline2 {
+  padding-top: 150px;
+  padding-bottom: 70px;
+}
+
+.inner-headline3 {
+  padding-top: 150px;
+  padding-bottom: 70px;
+}
+
+.inner-subtitle {
+  padding-bottom: 10px;
+  // padding-right: 100px;
+}
+// .home-page{
+//   background-color: $primary;
+// }
+
+.bg-home {
+  background-color: black; /* 为/home路由指定的颜色 */
+  color: white;
+}
+.bg-index {
+  background-color: #10348e;
+  color: #d8c8b8;
+}
+.bg-detect {
+  background-color: #134f2c; /* 为/detect路由指定的颜色 */
+  color: #dcd3b8;
+}
+.bg-detect-r {
+  background-color: #dcd3b8; /* 为/detect路由指定的颜色 */
+  color: #134f2c;
+}
+.text-detect-t{
+  color:#111b2c !important
+}
+
+.bg-defense {
+  background-color: #464c51; /* 为/defense路由指定的颜色 */
+  // color: #755037;
+  color: #9d968b;
+}
+.bg-log {
+  background-color: #636d38; /* 为/log路由指定的颜色 */
+  color: #e2ddd1;
+}
+
+.hoverable-div {
+  cursor: default; /* 默认情况下使用默认鼠标指针 */
+}
+
+.hoverable-div:hover {
+  cursor: pointer; /* 鼠标移入时变为手形指针 */
+}

@@ -1,17 +1,26 @@
 <template>
   <q-layout view="hHh LpR lFf">
-    <q-header reveal :class="bgColorClass" height-hint="98">
+    <q-header
+      class="row justify-center"
+      height-hint="98"
+      :style="{ backgroundColor: headerBackgroundColor }"
+      style="transition: transform 0.5s ease, background-color 0.5s ease"
+      :class="{ 'move-top': !showTopbar }"
+    >
       <!-- elevated 添加阴影（不要写在class里） -->
-      <q-toolbar>
+      <q-toolbar :class="windowClass">
         <q-toolbar-title class="row items-center">
-          <div class="row col items-center hoverable-div" @click="navigateTo('/')">
+          <div
+            class="row col items-center hoverable-div"
+            @click="navigateTo('/')"
+          >
             <img
               src="~assets/4.png"
               style="height: 40px; padding-right: 10px"
             />
             <div class="text-h5">语镜</div>
           </div>
-          <div class="row col-6 justify-start">
+          <div class="row col-8 justify-start">
             <SideNavigation></SideNavigation>
           </div>
           <div class="row col items-center justify-end">
@@ -27,16 +36,17 @@
               dark
               style="min-width: 150px; margin-right: 20px"
             />
-
-            <q-btn push label="退出" size="md" to="/" />
           </div>
         </q-toolbar-title>
       </q-toolbar>
 
-      <q-separator inset dark />
+      <div :class="windowClass">
+        <q-separator dark v-show="currentTabBar !== ''" v-if="showTabs" />
+      </div>
 
       <q-tabs
         align="right"
+        :class="windowClass"
         class="top-navigation home-bar"
         v-show="currentTabBar === 'home-bar'"
         v-if="showTabs"
@@ -48,7 +58,8 @@
 
       <q-tabs
         align="right"
-        class="top-navigation detect-bar"
+        :class="windowClass"
+        class="top-navigation home-bar"
         v-show="currentTabBar === 'detect-bar'"
         v-if="showTabs"
       >
@@ -61,9 +72,9 @@
       </q-tabs>
 
       <q-tabs
-      align="right"
-
-        class="top-navigation defense-bar"
+        align="right"
+        :class="windowClass"
+        class="top-navigation home-bar"
         v-show="currentTabBar === 'defense-bar'"
         v-if="showTabs"
       >
@@ -73,9 +84,9 @@
       </q-tabs>
 
       <q-tabs
-      align="right"
-
-        class="top-navigation log-bar"
+        align="right"
+        :class="windowClass"
+        class="top-navigation home-bar"
         v-show="currentTabBar === 'log-bar'"
         v-if="showTabs"
       >
@@ -96,7 +107,7 @@
     >
     </q-drawer> -->
 
-    <q-page-container class="fit row wrap justify-center items-center" :class="bgColorClass">
+    <!-- <q-page-container :class="bgColorClass">
       <div v-if="!isChildRoute" class="home-page">
         <SelectModel />
       </div>
@@ -105,28 +116,27 @@
           <component :is="Component" />
         </transition>
       </router-view>
+    </q-page-container> -->
+    <div v-if="!isChildRoute">
+      <SelectModel />
+    </div>
+    <q-page-container :class="bgColorClass" class="fit row justify-center">
+      <div :class="windowClass">
+        <router-view> </router-view>
+      </div>
     </q-page-container>
   </q-layout>
-  <!-- <q-btn
-    class="menu-button"
-    :class="{ 'move-right': isMoved }"
-    color="orange-7"
-    :icon="iconName"
-    fab
-    flat
-    round
-    @click="leftDrawerAndPositon"
-  >
-  </q-btn> -->
 </template>
 
 <script setup>
-import { ref, watch, nextTick, onMounted, computed } from 'vue';
+import { ref, watch, nextTick, onMounted, onUnmounted, computed } from 'vue';
 import SideNavigation from 'src/components/SideNavigation.vue';
 import SelectModel from 'src/pages/SelectModel.vue';
 import { useModelStore } from 'src/stores/store';
 import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
+import { useResponsiveClass } from 'src/mixin/ResponsiveMixin';
+const { windowClass, headerBackgroundColor, showTopbar } = useResponsiveClass();
 
 const leftDrawerOpen = ref(true);
 function toggleLeftDrawer() {
@@ -183,7 +193,26 @@ function navigateTo(route) {
 
 onMounted(async () => {
   updateTabBar(route.path);
+  window.addEventListener('scroll', updateHeaderBackground);
 });
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', updateHeaderBackground);
+});
+
+const updateHeaderBackground = () => {
+  console.log(route.path);
+
+  if (route.path !== '/') {
+    headerBackgroundColor.value =
+      window.scrollY > 100 ? 'black' : 'transparent';
+    showTopbar.value = window.scrollY > 100 ? false : true;
+  }
+  if (route.path === '/') {
+    headerBackgroundColor.value =
+      window.scrollY > 1000 ? 'black' : 'transparent';
+  }
+};
 
 watch(
   () => route.path,
@@ -239,5 +268,8 @@ const localeOptions = [
 }
 .move-right {
   transform: translateX(-130px);
+}
+.move-top {
+  transform: translateY(-80px);
 }
 </style>

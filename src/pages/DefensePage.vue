@@ -1,89 +1,98 @@
 <template>
-  <div class="inner-box">
-    <div class="row">
-      <div class="text-h1 inner-headline2 col">威胁防御</div>
-      <div class="text-h5 inner-headline3 col">大模型威胁防御模块 …………</div>
-    </div>
-    <q-img src="https://picsum.photos/id/208/2560/1600"></q-img>
-    <br /><br />
-    <div class="text-body1">介绍文字……</div>
+      <div class="row">
+        <div class="text-h1 inner-headline2 col">威胁防御</div>
+        <div class="text-h5 inner-headline3 col">大模型威胁防御模块 …………</div>
+      </div>
+      <q-img src="https://picsum.photos/id/208/2560/1600"></q-img>
+      <br /><br />
+      <div class="text-body1">介绍文字……</div>
 
-    <!-- <h1>功能开发中</h1> -->
-    <div style="background-color: white; border-radius: 8px">
-      <div class="q-pa-md">
-        <!-- 下拉框选择问题 -->
-        <q-select
-          v-model="selectedQuestion"
-          :options="questions"
-          option-value="value"
-          option-label="label"
-          label="选择一个问题"
-          outlined
-          class="q-mb-md"
-        />
-        <!-- 发送按钮 -->
-        <div class="flex q-gutter-md">
-          <q-btn
-            label="发送问题"
-            color="primary"
-            @click="sendQuestion"
-            :disabled="!selectedQuestion"
+      <!-- <h1>功能开发中</h1> -->
+      <div style="background-color: white; border-radius: 8px">
+        <div class="q-pa-md">
+          <!-- 下拉框选择问题 -->
+          <q-select
+            v-model="selectedQuestion"
+            :options="questions"
+            option-value="value"
+            option-label="label"
+            label="选择一个问题"
+            outlined
+            class="q-mb-md"
           />
-          <q-btn label="变换" color="red-10" />
-        </div>
-        <!-- 消息显示区 -->
-        <div
-          class="q-mt-md"
-          style="
-            overflow-y: auto;
-            padding: 10px;
-            border-radius: 4px;
-            border: 2px solid grey;
-          "
-        >
-          <q-splitter v-model="splitterModel" :limits="[40, 60]">
-            <template v-slot:before>
-              <div class="q-pa-md">
-                <div class="text-h4 q-mb-md">防御前</div>
-                <q-chat-message
-                  v-for="(message, index) in conversation"
-                  :key="index"
-                  :text="[message.text]"
-                  :name="message.sender === 'user' ? 'You' : 'Robot'"
-                  :avatar="message.sender === 'user' ? userAvatar : robotAvatar"
-                  :sent="message.sender === 'user'"
-                  :text-color="message.sender === 'user' ? '' : 'white'"
-                  :bg-color="message.sender === 'user' ? 'amber-7' : 'primary'"
-                />
-              </div>
-            </template>
+          <!-- 发送按钮 -->
+          <div class="flex q-gutter-md">
+            <q-btn
+              label="发送问题"
+              color="primary"
+              @click="sendQuestion"
+              :disabled="!selectedQuestion"
+            />
+            <q-btn label="变换" color="red-10" />
+          </div>
+          <!-- 消息显示区 -->
+          <div
+            class="q-mt-md"
+            style="
+              overflow-y: auto;
+              padding: 10px;
+              border-radius: 4px;
+              border: 2px solid grey;
+            "
+          >
+            <q-splitter v-model="splitterModel" :limits="[40, 60]">
+              <template v-slot:before>
+                <div class="q-pa-md">
+                  <div class="text-h4 q-mb-md">防御前</div>
+                  <q-chat-message
+                    v-for="(message, index) in conversation"
+                    :key="index"
+                    :text="[message.text]"
+                    :name="message.sender === 'user' ? 'You' : 'Robot'"
+                    :avatar="
+                      message.sender === 'user' ? userAvatar : robotAvatar
+                    "
+                    :sent="message.sender === 'user'"
+                    :text-color="message.sender === 'user' ? '' : 'white'"
+                    :bg-color="
+                      message.sender === 'user' ? 'amber-7' : 'primary'
+                    "
+                  />
+                </div>
+              </template>
 
-            <template v-slot:after>
-              <div class="q-pa-md">
-                <div class="text-h4 q-mb-md">防御后</div>
-                <q-chat-message
-                  v-for="(message, index) in conversation"
-                  :key="index"
-                  :text="[message.text]"
-                  :name="message.sender === 'user' ? 'You' : 'Robot'"
-                  :avatar="message.sender === 'user' ? userAvatar : robotAvatar"
-                  :sent="message.sender === 'user'"
-                  :text-color="message.sender === 'user' ? '' : 'white'"
-                  :bg-color="message.sender === 'user' ? 'amber-7' : 'primary'"
-                />
-              </div>
-            </template>
-          </q-splitter>
+              <template v-slot:after>
+                <div class="q-pa-md">
+                  <div class="text-h4 q-mb-md">防御后</div>
+                  <q-chat-message
+                    v-for="(message, index) in conversation"
+                    :key="index"
+                    :text="[message.text]"
+                    :name="message.sender === 'user' ? 'You' : 'Robot'"
+                    :avatar="
+                      message.sender === 'user' ? userAvatar : robotAvatar
+                    "
+                    :sent="message.sender === 'user'"
+                    :text-color="message.sender === 'user' ? '' : 'white'"
+                    :bg-color="
+                      message.sender === 'user' ? 'amber-7' : 'primary'
+                    "
+                  />
+                </div>
+              </template>
+            </q-splitter>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+
 </template>
 <script setup>
 import { ref } from 'vue';
 import { QSelect, QBtn, QChatMessage } from 'quasar';
 import userAvatar from '../assets/avatar.webp';
 import robotAvatar from '../assets/robot.webp';
+import { useResponsiveClass } from 'src/mixin/ResponsiveMixin';
+const { windowClass } = useResponsiveClass();
 
 const questions = ref([
   { label: "What's the weather like?", value: "What's the weather like?" },

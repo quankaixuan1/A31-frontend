@@ -34,6 +34,22 @@ $warning: #f2c037;
   //color: white;
 }
 
+// .windows-sm{
+
+// }
+
+.window-lg {
+  width: 100vw;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.window-xl {
+  width: 1550px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
 .inner-headline {
   padding-top: 400px;
   padding-bottom: 10px;
@@ -69,11 +85,11 @@ $warning: #f2c037;
   color: #dcd3b8;
 }
 .bg-detect-r {
-  background-color: #dcd3b8; /* 为/detect路由指定的颜色 */
+  background-color: #dcd3b8; /* 为/detect路由指定的颜色（反转色） */
   color: #134f2c;
 }
-.text-detect-t{
-  color:#111b2c !important
+.text-detect-t {
+  color: #111b2c;
 }
 
 .bg-defense {

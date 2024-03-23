@@ -26,5 +26,6 @@
 .side-navigation .q-tab__label {
   font-weight: 600;
   font-size: 18px;
+  width: 90px;
 }
 </style>

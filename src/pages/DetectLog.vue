@@ -1,9 +1,8 @@
 <template>
   <div v-if="!isChildRoute">
-    <div class="inner-box">
-      <h1>Log</h1>
-    </div>
+    <h1>Log</h1>
   </div>
+
   <router-view />
 </template>
 <script setup>
@@ -13,7 +12,6 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 const isChildRoute = computed(() => {
   return route.matched.length > 2;
-});</script>
-<style>
-
-</style>
+});
+</script>
+<style></style>

@@ -1,105 +1,131 @@
 <template>
   <div class="bg-home">
-    <q-parallax :height="700" :speed="0.5">
+    <q-parallax :height="1100" :speed="0.5">
       <template v-slot:media>
         <video autoplay loop muted class="background-video">
           <source src="~assets/BMI_Login.mp4" type="video/mp4" />
         </video>
       </template>
-      <div
-        style="
-          width: 100vw;
-          padding: 12px;
-          padding-left: 150px;
-          padding-right: 150px;
-        "
-      >
-        <div class="text-h1 inner-headline">语镜</div>
-        <q-separator color="white" size="" />
-        <div class="text-h4">大语言模型安全 检测&防御 系统</div>
-      </div>
-    </q-parallax>
-
-    <div class="inner-box">
-      <div class="text-body1">
-        在人工智能飞速发展的今天，大语言模型（LLM）已成为众多应用的核心技术。然而，随着其应用范围的扩大，安全问题也日益凸显。语镜是一款专为大语言模型设计的安全检测和防御系统，旨在为企业和开发者提供全方位的安全解决方案
-      </div>
-    </div>
-
-    <q-parallax :height="200" :speed="0.5">
-      <template v-slot:media>
-        <img src="https://cdn.quasar.dev/img/parallax1.jpg" />
-      </template>
-      <div class="text-white text-h2 inner-subtitle">安全检测</div>
-    </q-parallax>
-
-    <div class="inner-box">
-      <div class="text-h6 text-black">这里可以放业务流程图</div>
-
-      <div class="text-body1">
-        采用先进的算法，能够实时监测并识别大语言模型中的安全威胁，如数据泄露、模型欺骗等
-      </div>
-    </div>
-
-    <q-parallax :height="200" :speed="0.5">
-      <template v-slot:media>
-        <img src="https://cdn.quasar.dev/img/mountains.jpg" />
-      </template>
-      <div class="text-white text-h2 inner-subtitle">威胁防御</div>
-    </q-parallax>
-
-    <div class="inner-box">
-      <div class="text-h6 text-black">这里可以放业务流程图</div>
-
-      <div class="text-body1">
-        系统提供多层防御机制，能够有效阻止恶意攻击，保护模型免受损害
-      </div>
-    </div>
-
-    <q-parallax :height="200" :speed="0.5">
-      <template v-slot:media>
-        <img src="https://picsum.photos/id/400/2560/1600" />
-      </template>
-      <div class="text-white text-h2 inner-subtitle">强适应性</div>
-    </q-parallax>
-
-    <div class="inner-box">
-      <div class="text-h6 text-black">这里可以放业务流程图</div>
-
-      <div class="text-body1">
-        系统支持多种大语言模型和应用场景，可根据用户需求灵活配置
-      </div>
-    </div>
-
-    <q-parallax :height="200" :speed="0.5">
-      <template v-slot:media>
-        <img src="https://picsum.photos/id/1/1920/1080" />
-      </template>
-      <div class="text-white text-h2 inner-subtitle">软件集成</div>
-    </q-parallax>
-
-    <div class="inner-box">
-      <div class="text-h6 text-black">这里可以放业务流程图</div>
-
-      <div class="text-body1">
-        提供简洁的API接口，方便用户快速集成到现有系统中
-      </div>
-    </div>
-
-    <q-parallax :height="200" :speed="0.5">
-      <template v-slot:media>
-        <img src="https://picsum.photos/id/11/2560/1600" />
-      </template>
-      <div class="text-white text-h2 inner-subtitle">应用场景</div>
-    </q-parallax>
-
-    <div class="inner-box">
-      <div class="text-h6 text-black">这里可以放业务流程图</div>
-
-      <div class="text-body1">
-        企业级大语言模型部署/开放域对话系统/自然语言处理应用/AI辅助写作和内容生成
+      <div :class="windowClass">
+        <div class="text-h1 inner-headline">
+          Trustworthiness in Large Language Models
+        </div>
+        <!-- <q-separator color="white" size="" /> -->
         <br />
-        致力于为大语言模型提供全方位的安全防护，助力企业和开发者安心构建和部署智能应用。
+        <div class="text-h4">大语言模型安全 检测&防御系统</div>
+      </div>
+    </q-parallax>
+    <div class="fit row justify-center">
+      <div :class="windowClass">
+        <br /><br /><br />
+        <q-separator color="white" size="" />
+        <br />
+
+        <div class="row">
+          <div class="text-h3 col">安全检测</div>
+          <div class="text-h5 col row justify-end">
+            采用全面的数据集，能够识别大语言模型中的安全漏洞，如数据泄露、模型欺骗……
+          </div>
+        </div>
+
+        <br /><br /><br />
+        <div class="row justify-center q-gutter-xl">
+          <div class="col column items-center justify-center q-pa-xl">
+            <q-icon size="100px" name="dataset" />
+
+            <div class="text-h6">数据集</div>
+          </div>
+          <div class="col column items-center justify-center q-pa-xl">
+            <q-icon size="100px" name="find_in_page" />
+
+            <div class="text-h6">检测</div>
+          </div>
+          <div class="col column items-center justify-center q-pa-xl">
+            <q-icon size="100px" name="analytics" />
+
+            <div class="text-h6">评估</div>
+          </div>
+          <div class="col column items-center justify-center q-pa-xl">
+            <q-icon size="100px" name="leaderboard" />
+
+            <div class="text-h6">排行榜</div>
+          </div>
+        </div>
+        <br /><br /><br />
+
+        <q-separator color="white" size="" />
+        <br />
+        <div class="row">
+          <div class="text-h3 col">威胁防御</div>
+          <div class="text-h5 col row justify-end">
+            系统提供多层防御机制，实时监测并有效阻止恶意攻击，保护模型免受损害
+          </div>
+        </div>
+        <br /><br /><br />
+
+        <div class="row justify-center q-gutter-xl">
+          <div class="col column items-center justify-center q-pa-xl">
+            <q-icon size="100px" name="security" />
+
+            <div class="text-h6">模式</div>
+          </div>
+          <div class="col column items-center justify-center q-pa-xl">
+            <q-icon size="100px" name="question_answer" />
+
+            <div class="text-h6">防御效果</div>
+          </div>
+          <div class="col column items-center justify-center q-pa-xl">
+            <q-icon size="100px" name="edit_note" />
+
+            <div class="text-h6">输入识别</div>
+          </div>
+          <div class="col column items-center justify-center q-pa-xl">
+            <q-icon size="100px" name="subtitles" />
+
+            <div class="text-h6">输出识别</div>
+          </div>
+        </div>
+        <br /><br /><br />
+
+        <q-separator color="white" size="" />
+        <br />
+        <div class="text-h3">聚焦</div>
+        <br /><br /><br />
+
+        <div class="row q-gutter-xl">
+          <div class="col">
+            <q-parallax :height="300" :speed="0.5">
+              <template v-slot:media>
+                <img src="https://picsum.photos/id/400/2560/1600" />
+              </template>
+              <div class="text-white text-h2 inner-subtitle">强适应性</div>
+            </q-parallax>
+            <div class="text-subtitle1 q-pt-sm">
+              系统支持多种大语言模型和应用场景，可根据用户需求灵活配置
+            </div>
+          </div>
+          <div class="col">
+            <q-parallax :height="300" :speed="0.5">
+              <template v-slot:media>
+                <img src="https://picsum.photos/id/1/1920/1080" />
+              </template>
+              <div class="text-white text-h2 inner-subtitle">软件服务</div>
+            </q-parallax>
+            <div class="text-subtitle1 q-pt-sm">dddd</div>
+          </div>
+          <div class="col">
+            <q-parallax :height="300" :speed="0.5">
+              <template v-slot:media>
+                <img src="https://picsum.photos/id/11/2560/1600" />
+              </template>
+              <div class="text-white text-h2 inner-subtitle">应用场景</div>
+            </q-parallax>
+            <div class="text-subtitle1 q-pt-sm">
+              企业级大语言模型部署/开放域对话系统/自然语言处理应用/AI辅助写作和内容生成
+            </div>
+          </div>
+        </div>
+        <br /><br /><br />
       </div>
     </div>
 
@@ -127,6 +153,9 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { useResponsiveClass } from 'src/mixin/ResponsiveMixin';
+const { windowClass } = useResponsiveClass();
+</script>
 
 <style></style>

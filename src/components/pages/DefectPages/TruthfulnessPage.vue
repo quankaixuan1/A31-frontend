@@ -1,5 +1,4 @@
 <template>
-  <div class="inner-box">
     <div class="q-pa-md">
       <q-stepper v-model="step" vertical animated class="bg-detect-r">
         <q-step
@@ -94,7 +93,6 @@
         <q-separator spaced class="q-my-md" />
       </div>
     </q-page>
-  </div>
 </template>
 
 <script lang="ts" setup>

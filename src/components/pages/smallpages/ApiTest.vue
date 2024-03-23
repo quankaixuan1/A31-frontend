@@ -10,12 +10,13 @@
     </ul> -->
   </div>
   <button @click="fetchData">Get message</button>
-
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import { useResponsiveClass } from 'src/mixin/ResponsiveMixin';
+const { windowClass } = useResponsiveClass();
 
 const data = ref(null);
 

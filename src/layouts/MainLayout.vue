@@ -24,7 +24,7 @@
             <SideNavigation></SideNavigation>
           </div>
           <div class="row col items-center justify-end">
-            <q-select
+            <!-- <q-select
               v-model="locale"
               :options="localeOptions"
               label="Language"
@@ -35,7 +35,7 @@
               options-dense
               dark
               style="min-width: 150px; margin-right: 20px"
-            />
+            /> -->
           </div>
         </q-toolbar-title>
       </q-toolbar>
@@ -78,9 +78,8 @@
         v-show="currentTabBar === 'defense-bar'"
         v-if="showTabs"
       >
-        <q-route-tab to="" label="内部页面一" />
-        <q-route-tab to="" label="内部页面二" />
-        <q-route-tab to="" label="内部页面三" />
+        <q-route-tab to="/defense/res" label="防御效果" />
+        <q-route-tab to="/defense/score" label="输入&输出 识别" />
       </q-tabs>
 
       <q-tabs

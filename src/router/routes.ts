@@ -59,6 +59,19 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'defense',
         component: () => import('src/pages/DefensePage.vue'),
+        children: [
+          {
+            path: 'res',
+            component: () =>
+              import('src/components/pages/DefensePages/MessageRes.vue'),
+
+          },
+          {
+            path: 'score',
+            component: () =>
+              import('src/components/pages/DefensePages/MessageScore.vue'),
+          }
+        ],
       },
       {
         path: 'log',

@@ -80,23 +80,37 @@ $warning: #f2c037;
   background-color: #10348e;
   color: #d8c8b8;
 }
+// .bg-detect {
+//   background-color: #134f2c; /* 为/detect路由指定的颜色 */
+//   color: #dcd3b8;
+// }
 .bg-detect {
-  background-color: #134f2c; /* 为/detect路由指定的颜色 */
-  color: #dcd3b8;
+  background-color: #d1c6bf; /* 为/detect路由指定的颜色 */
+  color: #313735;
 }
 .bg-detect-r {
-  background-color: #dcd3b8; /* 为/detect路由指定的颜色（反转色） */
-  color: #134f2c;
+  background-color: #313735; /* 为/detect路由指定的颜色（反转色） */
+  color: #d1c6bf;
 }
 .text-detect-t {
-  color: #111b2c;
+  color: #7a8e93;
 }
+
+
+
 
 .bg-defense {
   background-color: #464c51; /* 为/defense路由指定的颜色 */
   // color: #755037;
   color: #9d968b;
 }
+
+.bg-defense-r {
+  background-color: #9d968b; /* 为/defense路由指定的颜色 */
+  // color: #755037;
+  color: #464c51;
+}
+
 .bg-log {
   background-color: #636d38; /* 为/log路由指定的颜色 */
   color: #e2ddd1;

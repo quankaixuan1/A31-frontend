@@ -1,12 +1,13 @@
 <template>
   <div v-if="!isChildRoute">
+
     <div class="row">
       <div class="text-h1 inner-headline2 col">安全检测</div>
-      <div class="text-h5 inner-headline3 col">
+      <div class="text-h5 inner-headline2 col">
         大模型安全漏洞检测模块 从六个维度进行 检测 & 评估
       </div>
     </div>
-    <q-img src="https://picsum.photos/id/250/2560/1600"></q-img>
+    <q-img src="../assets/detect.png"></q-img>
     <div class="text-body1">
       <!-- &emsp;&emsp; -->
       <br />
@@ -142,7 +143,6 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { reactive } from 'vue';
-import { QBtn } from 'quasar';
 
 const route = useRoute();
 const isChildRoute = computed(() => {

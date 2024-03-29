@@ -1,81 +1,78 @@
 <template>
-    <div class="q-pa-md">
-      <q-stepper v-model="step" vertical animated class="bg-detect-r">
-        <q-step
-          :name="1"
-          title="下载prompt数据集"
-          icon="settings"
-          :done="step > 1"
+  <div class="row">
+    <div class="text-h2 inner-headline2 col">检测评估</div>
+  </div>
+
+  <q-stepper v-model="step" vertical animated class="bg-detect-r">
+    <q-step
+      :name="1"
+      title="下载prompt数据集"
+      icon="settings"
+      :done="step > 1"
+      color="detect-t"
+    >
+      将下载完成的数据集输入您的LLM，得到输出的generation
+
+      <q-stepper-navigation>
+        <q-btn
+          icon="download"
+          label="下载"
+          class="bg-detect"
+          style="width: 100px"
+          @click="downloadFile"
+        ></q-btn>
+        <br />
+        <br />
+        <q-btn @click="step = 2" class="bg-detect" label="Continue" />
+      </q-stepper-navigation>
+    </q-step>
+
+    <q-step
+      :name="2"
+      title="上传您得到的generation"
+      caption=""
+      icon="create_new_folder"
+      :done="step > 2"
+      color="detect-t"
+    >
+      我们将帮助您分析评估您的模型
+
+      <q-stepper-navigation>
+        <q-file
+          v-model="selectedFile"
+          label="选择文件"
+          filled
+          style="width: 175px"
           color="detect-t"
-        >
-          将下载完成的数据集输入您的LLM，得到输出的generation
+        />
+        <q-btn
+          icon="upload"
+          label="上传"
+          class="bg-detect"
+          style="width: 175px"
+          @click="uploadFile"
+          :disabled="!selectedFile"
+        ></q-btn>
+        <br /><br />
+        <q-btn @click="step = 4" class="bg-detect" label="Continue" />
+        <q-btn flat @click="step = 1" label="Back" class="q-ml-sm" />
+      </q-stepper-navigation>
+    </q-step>
 
-          <q-stepper-navigation>
-            <q-btn
-              icon="download"
-              label="下载"
-              class="bg-detect"
-              style="width: 100px"
-              @click="downloadFile"
-            ></q-btn>
-            <br />
-            <br />
-            <q-btn @click="step = 2" class="bg-detect" label="Continue" />
-          </q-stepper-navigation>
-        </q-step>
-
-        <q-step
-          :name="2"
-          title="上传您得到的generation"
-          caption=""
-          icon="create_new_folder"
-          :done="step > 2"
-          color="detect-t"
-        >
-          我们将帮助您分析评估您的模型
-
-          <q-stepper-navigation>
-            <q-file
-              v-model="selectedFile"
-              label="选择文件"
-              filled
-              style="width: 175px"
-              color="detect-t"
-            />
-            <q-btn
-              icon="upload"
-              label="上传"
-              class="bg-detect"
-              style="width: 175px"
-              @click="uploadFile"
-              :disabled="!selectedFile"
-            ></q-btn>
-            <br /><br />
-            <q-btn @click="step = 4" class="bg-detect" label="Continue" />
-            <q-btn flat @click="step = 1" label="Back" class="q-ml-sm" />
-          </q-stepper-navigation>
-        </q-step>
-
-        <!-- <q-step :name="3" title="Ad template" icon="assignment" disable>
+    <!-- <q-step :name="3" title="Ad template" icon="assignment" disable>
           This step won't show up because it is disabled.
         </q-step> -->
 
-        <q-step
-          :name="4"
-          title="得到评估分数"
-          icon="add_comment"
-          color="detect-t"
-        >
-          点击完成后 我们会在下方展示您的LLM在这个维度的得分
+    <q-step :name="4" title="得到评估分数" icon="add_comment" color="detect-t">
+      点击完成后 我们会在下方展示您的LLM在这个维度的得分
 
-          <q-stepper-navigation>
-            <q-btn class="bg-detect" label="Finish" @click="fetchData" />
-            <q-btn flat @click="step = 2" label="Back" class="q-ml-sm" />
-          </q-stepper-navigation>
-        </q-step>
-      </q-stepper>
-    </div>
-    <!-- <div v-if="data" class="q-pa-md">
+      <q-stepper-navigation>
+        <q-btn class="bg-detect" label="Finish" @click="fetchData" />
+        <q-btn flat @click="step = 2" label="Back" class="q-ml-sm" />
+      </q-stepper-navigation>
+    </q-step>
+  </q-stepper>
+  <!-- <div v-if="data" class="q-pa-md">
       <q-table
         title="评估结果"
         :rows="data"
@@ -83,16 +80,16 @@
         row-key="model"
       />
     </div> -->
-    <q-page class="q-pa-md">
-      <q-separator spaced class="q-my-md" />
-      <div v-for="(data, index) in evaluationData" :key="index">
-        <div class="text-h6 q-my-md">{{ data.title }}</div>
-        <!-- 标题 -->
+  <q-page>
+    <q-separator spaced class="q-my-md" />
+    <div v-for="(data, index) in evaluationData" :key="index">
+      <div class="text-h6 q-my-md">{{ data.title }}</div>
+      <!-- 标题 -->
 
-        <q-table :rows="data.rows" :columns="columns" row-key="id" />
-        <q-separator spaced class="q-my-md" />
-      </div>
-    </q-page>
+      <q-table :rows="data.rows" :columns="columns" row-key="id" />
+      <q-separator spaced class="q-my-md" />
+    </div>
+  </q-page>
 </template>
 
 <script lang="ts" setup>
@@ -163,44 +160,78 @@ function uploadFile() {
 const evaluationData = ref([]);
 const urls = [
   {
-    url: 'http://8.130.135.136:8100/getEvalData/Fairness/ChatGPT',
-    title: 'Fairness',
+    url: 'http://49.232.195.59:8100/getEvalData?evalType=Fairness&model=GLM3-turbo',
+    title: '真实性(Fairness)',
   },
   {
-    url: 'http://8.130.135.136:8100/getEvalData/MachineEthics/ChatGPT',
-    title: 'Machine Ethics',
+    url: 'http://49.232.195.59:8100/getEvalData?evalType=MachineEthics&model=GLM3-turbo',
+    title: '机器伦理(Machine Ethics)',
   },
   {
-    url: 'http://8.130.135.136:8100/getEvalData/Privacy/ChatGPT',
-    title: 'Privacy',
+    url: 'http://49.232.195.59:8100/getEvalData?evalType=Privacy&model=GLM3-turbo',
+    title: '隐私保护(Privacy)',
   },
   {
-    url: 'http://8.130.135.136:8100/getEvalData/Robustness/ChatGPT',
-    title: 'Robustness',
+    url: 'http://49.232.195.59:8100/getEvalData?evalType=Robustness&model=GLM3-turbo',
+    title: '鲁棒性(Robustness)',
   },
   {
-    url: 'http://8.130.135.136:8100/getEvalData/Safety/ChatGPT',
-    title: 'Safety',
+    url: 'http://49.232.195.59:8100/getEvalData?evalType=Safety&model=GLM3-turbo',
+    title: '安全性(Safety)',
   },
   {
-    url: 'http://8.130.135.136:8100/getEvalData/Truthfulness/ChatGPT',
-    title: 'Truthfulness',
+    url: 'http://49.232.195.59:8100/getEvalData?evalType=Truthfulness&model=GLM3-turbo',
+    title: '真实性(Truthfulness)',
   },
 ];
+
+const lowerIsBetterMetrics = [
+  'leakage_td',
+  'leakage_cd',
+  'overall_agreement_rate',
+  'toxicity',
+  'exaggerated_safety',
+  'persona_sycophancy',
+  'preference_sycophancy',
+];
+
+const advInstruction = ['advinstruction'];
 
 const fetchData = async () => {
   try {
     const promises = urls.map(({ url }) => axios.get(url));
     const results = await Promise.all(promises);
     evaluationData.value = results.map((result, index) => ({
-      title: urls[index].title, // 为每个表格添加标题
+      title: urls[index].title,
       rows: Object.entries(result.data[0])
-        .filter(([key]) => key !== 'model') // 排除 "model" 字段
-        .map(([key, value], id) => ({
-          id: id + 1,
-          metric: key,
-          value: value,
-        })),
+        .filter(([key]) => key !== 'model')
+        .map(([key, value], id) => {
+          const isLowerBetter = lowerIsBetterMetrics.includes(key);
+          const isAdvInstruction = advInstruction.includes(key);
+          let percentageValue = value * 100;
+          let displayValue;
+          if (isLowerBetter) {
+            percentageValue = (1 - value) * 100;
+            displayValue = `${percentageValue.toFixed(0)}`;
+          }
+
+          if (!isLowerBetter) {
+            if (isAdvInstruction) {
+              percentageValue = value;
+              displayValue = `${percentageValue.toFixed(0)}`;
+            } else {
+              // 其他指标直接转换为百分比
+              percentageValue = value * 100;
+              displayValue = `${percentageValue.toFixed(0)}`;
+            }
+          }
+          return {
+            id: id + 1,
+            metric: key,
+            value: value,
+            displayValue: displayValue,
+          };
+        }),
     }));
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -220,6 +251,13 @@ const columns = ref([
     align: 'left',
     label: 'Value',
     field: 'value',
+    sortable: true,
+  },
+  {
+    name: 'displayValue',
+    align: 'left',
+    label: '分数（百分制）',
+    field: 'displayValue',
     sortable: true,
   },
 ]);

@@ -2,7 +2,7 @@
   <q-tabs class="side-navigation">
     <!-- <q-route-tab class="in" name="home" label="首页" to="/index" /> -->
     <q-route-tab class="in" name="Detect" label="安全检测" to="/detect" />
-    <q-route-tab class="in" name="Defense" label="威胁防御" to="/defense/res" />
+    <q-route-tab class="in" name="Defense" label="威胁防御" to="/defense" />
     <q-route-tab class="in" name="Log" label="系统日志" to="/log" />
   </q-tabs>
 </template>

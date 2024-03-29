@@ -79,7 +79,7 @@
         v-if="showTabs"
       >
         <q-route-tab to="/defense/res" label="防御效果" />
-        <q-route-tab to="/defense/score" label="输入&输出 识别" />
+        <q-route-tab to="/defense/score" label="防御分数" />
       </q-tabs>
 
       <q-tabs
@@ -121,7 +121,11 @@
     </div>
     <q-page-container :class="bgColorClass" class="fit row justify-center">
       <div :class="windowClass">
-        <router-view> </router-view>
+        <router-view v-slot="{ Component }">
+          <keep-alive>
+            <component :is="Component" />
+          </keep-alive>
+        </router-view>
       </div>
     </q-page-container>
   </q-layout>
@@ -200,7 +204,7 @@ onUnmounted(() => {
 });
 
 const updateHeaderBackground = () => {
-  console.log(route.path);
+  // console.log(route.path);
 
   if (route.path !== '/') {
     headerBackgroundColor.value =

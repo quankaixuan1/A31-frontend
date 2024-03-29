@@ -150,6 +150,25 @@
         </div>
       </template>
     </q-parallax>
+    <br /><br />
+    <div class="row justify-center">
+      <a href="https://beian.miit.gov.cn" target="_blank" style="color: #ccc"
+        >浙ICP备2024078542号</a
+      >
+      <!-- <a
+        target="_blank"
+        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010202009747"
+        style="margin-right: 10px"
+      >
+        <img
+          src="https://t1.chei.com.cn/chsi/images/jgwab.png"
+          style="float: left"
+        />
+        <span style="float: left; color: #ccc; margin-left: 5px"
+          >京公网安备11010202009747号</span
+        >
+      </a> -->
+    </div>
   </div>
 </template>
 

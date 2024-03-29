@@ -10,13 +10,14 @@
     </ul> -->
   </div>
   <button @click="fetchData">Get message</button>
+  <q-page padding>
+    <q-btn label="Send Data" @click="sendData"></q-btn>
+  </q-page>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
 import axios from 'axios';
-import { useResponsiveClass } from 'src/mixin/ResponsiveMixin';
-const { windowClass } = useResponsiveClass();
 
 const data = ref(null);
 
@@ -30,4 +31,19 @@ function fetchData() {
       console.error('There was an error!', error);
     });
 }
+const sendData = async () => {
+  const prompt = '你好啊';
+  const url = 'http://49.232.195.59:8100/defense/exec';
+
+  try {
+    const response = await axios.post(url, {
+      prompt
+    });
+    console.log('Response:', response.data);
+    // 处理响应数据
+  } catch (error) {
+    console.error('Error:', error);
+    // 处理错误情况
+  }
+};
 </script>

@@ -48,18 +48,6 @@
         align="right"
         :class="windowClass"
         class="top-navigation home-bar"
-        v-show="currentTabBar === 'home-bar'"
-        v-if="showTabs"
-      >
-        <q-route-tab to="" label="资讯" />
-        <q-route-tab to="" label="图表" />
-        <q-route-tab to="/index/test" label="测试" />
-      </q-tabs>
-
-      <q-tabs
-        align="right"
-        :class="windowClass"
-        class="top-navigation home-bar"
         v-show="currentTabBar === 'detect-bar'"
         v-if="showTabs"
       >
@@ -92,6 +80,18 @@
         <q-route-tab to="/log/table" label="漏洞" />
         <q-route-tab to="/log/graph" label="图表" />
         <q-route-tab to="" label="版本" />
+      </q-tabs>
+
+      <q-tabs
+        align="right"
+        :class="windowClass"
+        class="top-navigation home-bar"
+        v-show="currentTabBar === 'home-bar'"
+        v-if="showTabs"
+      >
+        <q-route-tab to="/index/news" label="新闻" />
+        <q-route-tab to="/index/we" label="联系我们" />
+        <q-route-tab to="/index/test" label="测试" />
       </q-tabs>
     </q-header>
 

@@ -14,16 +14,16 @@
       将下载完成的数据集输入您的LLM，得到输出的generation
 
       <q-stepper-navigation>
-        <q-btn
-          icon="download"
-          label="下载"
-          class="bg-detect"
-          style="width: 100px"
-          @click="downloadFile"
-        ></q-btn>
-        <br />
-        <br />
-        <q-btn @click="step = 2" class="bg-detect" label="Continue" />
+        <div class="column" style="width: 200px">
+          <q-btn
+            icon="download"
+            label="下载"
+            class="bg-detect"
+            @click="downloadFile"
+          ></q-btn>
+          <br />
+          <q-btn @click="step = 2" class="bg-detect" label="下一步" />
+        </div>
       </q-stepper-navigation>
     </q-step>
 
@@ -38,24 +38,26 @@
       我们将帮助您分析评估您的模型
 
       <q-stepper-navigation>
-        <q-file
-          v-model="selectedFile"
-          label="选择文件"
-          filled
-          style="width: 175px"
-          color="detect-t"
-        />
-        <q-btn
-          icon="upload"
-          label="上传"
-          class="bg-detect"
-          style="width: 175px"
-          @click="uploadFile"
-          :disabled="!selectedFile"
-        ></q-btn>
-        <br /><br />
-        <q-btn @click="step = 4" class="bg-detect" label="Continue" />
-        <q-btn flat @click="step = 1" label="Back" class="q-ml-sm" />
+        <div class="column" style="width: 200px">
+          <q-file
+            v-model="selectedFile"
+            label="选择文件"
+            filled
+            color="detect-t"
+          />
+          <q-btn
+            icon="upload"
+            label="上传"
+            class="bg-detect"
+            @click="uploadFile"
+            :disabled="!selectedFile"
+          ></q-btn>
+          <br />
+          <div class="fit row">
+            <q-btn @click="step = 4" class="bg-detect col" label="下一步" />
+            <q-btn flat @click="step = 1" label="返回" class="q-ml-sm col" />
+          </div>
+        </div>
       </q-stepper-navigation>
     </q-step>
 
@@ -67,8 +69,10 @@
       点击完成后 我们会在下方展示您的LLM在这个维度的得分
 
       <q-stepper-navigation>
-        <q-btn class="bg-detect" label="Finish" @click="fetchData" />
-        <q-btn flat @click="step = 2" label="Back" class="q-ml-sm" />
+        <div class="row" style="width: 200px">
+          <q-btn class="bg-detect col" label="完成" @click="fetchData" />
+          <q-btn flat @click="step = 2" label="返回" class="q-ml-sm col" />
+        </div>
       </q-stepper-navigation>
     </q-step>
   </q-stepper>
@@ -94,7 +98,6 @@
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
-import { QBtn, QFile, QTable } from 'quasar';
 import axios from 'axios';
 
 // import LogData from 'src/components/LogData.vue';

@@ -18,6 +18,16 @@ const routes: RouteRecordRaw[] = [
             component: () =>
               import('src/components/pages/smallpages/ApiTest.vue'),
           },
+          {
+            path: 'news',
+            component: () =>
+              import('src/components/pages/smallpages/NewsPage.vue'),
+          },
+          {
+            path: 'we',
+            component: () =>
+              import('src/components/pages/smallpages/WePage.vue'),
+          },
         ],
       },
       {
@@ -64,7 +74,6 @@ const routes: RouteRecordRaw[] = [
             path: 'res',
             component: () =>
               import('src/components/pages/DefensePages/MessageRes.vue'),
-
           },
           {
             path: 'score',

@@ -211,10 +211,10 @@ const sendData = async () => {
     PromptInjection.value = response.data.PromptInjection;
 
     inputScore.value =
-      Anonymize.value +
-      Toxicity.value +
-      TokenLimit.value +
-      PromptInjection.value;
+      parseFloat(Anonymize.value) +
+      parseFloat(Toxicity.value) +
+      parseFloat(TokenLimit.value) +
+      parseFloat(PromptInjection.value);
 
     Sensitive.value = response.data.Sensitive;
     Relevance.value = response.data.Relevance;
@@ -222,7 +222,10 @@ const sendData = async () => {
     NoRefusal.value = response.data.NoRefusal;
 
     outputScore.value =
-      Sensitive.value + Relevance.value + Deanonymize.value + NoRefusal.value;
+      parseFloat(Sensitive.value) +
+      parseFloat(Relevance.value) +
+      parseFloat(Deanonymize.value) +
+      parseFloat(NoRefusal.value);
 
     // console.log(outputScore.value);
 
@@ -253,8 +256,6 @@ const sendData = async () => {
 function test() {
   const serverResponse = JSON.parse(localStorage.getItem('serverResponse'));
   console.log(serverResponse.data);
-  const reply = serverResponse.data.Output;
-  conversation.value.push({ text: reply, sender: 'robot' });
 
   Anonymize.value = serverResponse.data.Anonymize;
   Toxicity.value = serverResponse.data.Toxicity;
@@ -267,7 +268,7 @@ function test() {
     parseFloat(TokenLimit.value) +
     parseFloat(PromptInjection.value);
 
-  console.log(inputScore.value);
+  // console.log(inputScore.value);
 
   Sensitive.value = serverResponse.data.Sensitive;
   Relevance.value = serverResponse.data.Relevance;

@@ -1,10 +1,9 @@
 <template>
   <div v-if="!isChildRoute">
-
     <div class="row">
       <div class="text-h1 inner-headline2 col">安全检测</div>
       <div class="text-h5 inner-headline2 col">
-        大模型安全漏洞检测模块 从六个维度进行 检测 & 评估
+        检测评估您的大语言模型，或是查看市面上流行的大语言模型的各项评分排行
       </div>
     </div>
     <q-img src="../assets/detect.png"></q-img>

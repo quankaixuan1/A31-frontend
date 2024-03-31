@@ -28,7 +28,7 @@
           </div>
         </div>
 
-        <br /><br /><br />
+        <br />
         <div class="row justify-center q-gutter-xl">
           <div class="col column items-center justify-center q-pa-xl">
             <q-icon size="100px" name="dataset" />
@@ -51,7 +51,7 @@
             <div class="text-h6">排行榜</div>
           </div>
         </div>
-        <br /><br /><br />
+        <br />
 
         <q-separator color="white" size="" />
         <br />

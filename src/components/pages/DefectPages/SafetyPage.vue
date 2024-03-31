@@ -6,10 +6,10 @@
 
   <div
     style="font-family: 'Tsukushi A Round Gothic'"
-    class="text-h2 inner-headline3"
+    class="text-h4 inner-headline3"
   >
 
-    Truthfulness
+  真实性(Truthfulness)
   </div>
   <q-table
     :rows="TruthfulnessRows"
@@ -24,9 +24,10 @@
 
   <div
     style="font-family: 'Tsukushi A Round Gothic'"
-    class="text-h2 inner-headline3"
+    class="text-h4 inner-headline3"
   >
-    Safety
+  安全性(Safety)
+
   </div>
   <q-table
     :rows="SafetyRows"
@@ -40,9 +41,10 @@
   <q-separator spaced class="q-my-md" />
   <div
     style="font-family: 'Tsukushi A Round Gothic'"
-    class="text-h2 inner-headline3"
+    class="text-h4 inner-headline3"
   >
-    Fairness
+  真实性(Fairness)
+
   </div>
   <q-table
     :rows="FairnessRows"
@@ -56,9 +58,10 @@
   <q-separator spaced class="q-my-md" />
   <div
     style="font-family: 'Tsukushi A Round Gothic'"
-    class="text-h2 inner-headline3"
+    class="text-h4 inner-headline3"
   >
-    Robustness
+  鲁棒性(Robustness)
+
   </div>
   <q-table
     :rows="RobustnessRows"
@@ -72,9 +75,9 @@
   <q-separator spaced class="q-my-md" />
   <div
     style="font-family: 'Tsukushi A Round Gothic'"
-    class="text-h2 inner-headline3"
+    class="text-h4 inner-headline3"
   >
-    Privacy
+  隐私保护(Privacy)
   </div>
   <q-table
     :rows="PrivacyRows"
@@ -88,9 +91,9 @@
   <q-separator spaced class="q-my-md" />
   <div
     style="font-family: 'Tsukushi A Round Gothic'"
-    class="text-h2 inner-headline3"
+    class="text-h4 inner-headline3"
   >
-    Machine Ethics
+  机器伦理(Machine Ethics)
   </div>
   <q-table
     :rows="EthicsRows"

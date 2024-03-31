@@ -2,13 +2,17 @@
   <div v-if="!isChildRoute">
     <div class="row">
       <div class="text-h1 inner-headline2 col">威胁防御</div>
-      <div class="text-h5 inner-headline2 col">大模型威胁防御模块 …………</div>
+      <div class="text-h5 inner-headline2 col">了解威胁防御模块的防御效果，还可以体验防御功能如何实现</div>
     </div>
     <q-img src="../assets/defense.png"></q-img>
     <br /><br />
-    <div class="text-body1">介绍文字……</div>
+    <q-page> <div class="text-body1">介绍文字……</div> </q-page>
   </div>
-  <router-view></router-view>
+  <router-view v-slot="{ Component }">
+    <keep-alive>
+      <component :is="Component" />
+    </keep-alive>
+  </router-view>
 </template>
 <script setup>
 import { useRoute } from 'vue-router';

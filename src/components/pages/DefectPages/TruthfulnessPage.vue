@@ -44,6 +44,7 @@
             label="选择文件"
             filled
             color="detect-t"
+            dark
           />
           <q-btn
             icon="upload"
@@ -105,10 +106,10 @@ const step = ref(1);
 // const showTable = ref(false);
 
 function downloadFile() {
-  const url = 'path/to/your/file.txt'; // 这里的URL应指向你想要下载的文件
+  const url = 'path/to/your/emotion.json'; // 这里的URL应指向你想要下载的文件
   const link = document.createElement('a');
   link.href = url;
-  link.download = 'file.txt'; // 提供下载时的文件名
+  link.download = 'emotion.json'; // 提供下载时的文件名
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

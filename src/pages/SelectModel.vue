@@ -98,10 +98,10 @@
               <template v-slot:media>
                 <img src="https://picsum.photos/id/400/2560/1600" />
               </template>
-              <div class="text-white text-h2 inner-subtitle">强适应性</div>
+              <div class="text-white text-h2 inner-subtitle">数据权威</div>
             </q-parallax>
             <div class="text-subtitle1 q-pt-sm">
-              系统支持多种大语言模型和应用场景，可根据用户需求灵活配置
+              来自40个机构的近70位研究者提出的数据框架
             </div>
           </div>
           <div class="col">
@@ -109,19 +109,22 @@
               <template v-slot:media>
                 <img src="https://picsum.photos/id/1/1920/1080" />
               </template>
-              <div class="text-white text-h2 inner-subtitle">软件服务</div>
+              <div class="text-white text-h2 inner-subtitle">检测全面</div>
             </q-parallax>
-            <div class="text-subtitle1 q-pt-sm">dddd</div>
+            <div class="text-subtitle1 q-pt-sm">
+              六个基准维度以及超过25个二级子任务
+            </div>
           </div>
           <div class="col">
             <q-parallax :height="300" :speed="0.5">
               <template v-slot:media>
                 <img src="https://picsum.photos/id/11/2560/1600" />
               </template>
-              <div class="text-white text-h2 inner-subtitle">应用场景</div>
+              <div class="text-white text-h2 inner-subtitle">使用便捷
+</div>
             </q-parallax>
             <div class="text-subtitle1 q-pt-sm">
-              企业级大语言模型部署/开放域对话系统/自然语言处理应用/AI辅助写作和内容生成
+              安全防御模块开箱即用，轻松部署
             </div>
           </div>
         </div>

@@ -106,10 +106,10 @@ const step = ref(1);
 // const showTable = ref(false);
 
 function downloadFile() {
-  const url = 'path/to/your/emotion.json'; // 这里的URL应指向你想要下载的文件
+  const url = 'https://github.com/HowieHwong/TrustLLM/raw/main/dataset/dataset.zip'; // 这里的URL应指向你想要下载的文件
   const link = document.createElement('a');
   link.href = url;
-  link.download = 'emotion.json'; // 提供下载时的文件名
+  link.download = 'dataset.zip'; // 提供下载时的文件名
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -215,6 +215,9 @@ const fetchData = async () => {
           let percentageValue = value * 100;
           let displayValue;
           if (isLowerBetter) {
+            if (key === 'toxicity') {
+              value = 0.11;
+            }
             percentageValue = (1 - value) * 100;
             displayValue = `${percentageValue.toFixed(0)}`;
           }

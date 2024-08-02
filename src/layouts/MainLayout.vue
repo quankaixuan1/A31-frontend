@@ -66,8 +66,10 @@
         v-show="currentTabBar === 'defense-bar'"
         v-if="showTabs"
       >
-        <q-route-tab to="/defense/res" label="防御效果" />
-        <q-route-tab to="/defense/score" label="防御分数" />
+        <q-route-tab to="/defense/input" label="输入检测" />
+        <q-route-tab to="/defense/output" label="输出检测" />
+        <q-route-tab to="/defense/res" label="防御效果展示" />
+        <q-route-tab to="/defense/score" label="体验安全防御" />
       </q-tabs>
 
       <q-tabs
@@ -89,9 +91,9 @@
         v-show="currentTabBar === 'home-bar'"
         v-if="showTabs"
       >
-        <q-route-tab to="/index/news" label="新闻" />
+        <!-- <q-route-tab to="/index/news" label="新闻" /> -->
         <q-route-tab to="/index/we" label="联系我们" />
-        <q-route-tab to="/index/test" label="测试" />
+        <!-- <q-route-tab to="/index/test" label="测试" /> -->
       </q-tabs>
     </q-header>
 

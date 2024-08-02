@@ -1,14 +1,14 @@
 <template>
   <div class="row">
-    <div class="text-h2 inner-headline2 col">安全LLM</div>
-    <div class="text-h5 inner-headline2 col">当前大模型已开启防御</div>
+    <div class="text-h2 inner-headline2 col">输入检测</div>
+    <div class="text-h5 inner-headline2 col">根据需求选择输出检测模块，配置相应参数，对内容进行净化，适应企业特定任务需要</div>
   </div>
   <q-page>
     <div class="bg-defense-r" style="border-radius: 8px">
       <div class="q-pa-md">
         <div class="column">
           <!-- 显示区 -->
-          <div
+          <!-- <div
             class="q-mt-md"
             style="
               overflow-y: auto;
@@ -39,20 +39,20 @@
                 :bg-color="message.sender === 'user' ? 'amber-7' : 'primary'"
               />
             </div>
-          </div>
+          </div> -->
           <!-- 输入区 -->
           <q-input
             v-model="inputData"
             label="请输入内容"
             outlined
             color="white"
-            @keyup.enter="sendData"
+            @keyup.enter="sendDataInput"
           />
           <br />
           <div class="fit row">
             <q-btn
               label="发送数据"
-              @click="sendData"
+              @click="sendDataInput"
               class="bg-defense col-2"
             />
             <!-- <div class="col"></div>
@@ -60,9 +60,45 @@
             <div class="col-7"></div> -->
           </div>
           <!-- 分数区 -->
-          <!-- <br /> -->
-          <!-- <div v-if="responseReceived">
+          <br />
+          <div>
             <div class="row q-gutter-lg">
+              <q-card bordered class="my-card col bg-defense">
+                <!-- <q-card-section class="row items-center">
+                  <div class="text-h6">输出分数</div>
+                  <q-space></q-space>
+                  <q-icon
+                    :name="outputIconInfo.icon"
+                    :color="outputIconInfo.color"
+                    size="lg"
+                  />
+                </q-card-section>
+
+                <q-separator dark inset />
+
+                <q-card-section>
+                  <q-markup-table separator="cell">
+                    <tbody>
+                      <tr>
+                        <td class="text-left">Sensitive</td>
+                        <td class="text-center">{{ Sensitive }}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-left">Relevance</td>
+                        <td class="text-center">{{ Relevance }}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-left">Deanonymize</td>
+                        <td class="text-center">{{ Deanonymize }}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-left">NoRefusal</td>
+                        <td class="text-center">{{ NoRefusal }}</td>
+                      </tr>
+                    </tbody>
+                  </q-markup-table>
+                </q-card-section> -->
+              </q-card>
               <q-card bordered class="my-card col bg-defense">
                 <q-card-section class="row items-center">
                   <div class="text-h6">输入分数</div>
@@ -100,44 +136,8 @@
                   </q-markup-table>
                 </q-card-section>
               </q-card>
-              <q-card bordered class="my-card col bg-defense">
-                <q-card-section class="row items-center">
-                  <div class="text-h6">输出分数</div>
-                  <q-space></q-space>
-                  <q-icon
-                    :name="outputIconInfo.icon"
-                    :color="outputIconInfo.color"
-                    size="lg"
-                  />
-                </q-card-section>
-
-                <q-separator dark inset />
-
-                <q-card-section>
-                  <q-markup-table separator="cell">
-                    <tbody>
-                      <tr>
-                        <td class="text-left">Sensitive</td>
-                        <td class="text-center">{{ Sensitive }}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-left">Relevance</td>
-                        <td class="text-center">{{ Relevance }}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-left">Deanonymize</td>
-                        <td class="text-center">{{ Deanonymize }}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-left">NoRefusal</td>
-                        <td class="text-center">{{ NoRefusal }}</td>
-                      </tr>
-                    </tbody>
-                  </q-markup-table>
-                </q-card-section>
-              </q-card>
             </div>
-          </div> -->
+          </div>
         </div>
 
       </div>
@@ -147,10 +147,8 @@
   </q-page>
 </template>
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import axios from 'axios';
-import userAvatar from '../../../assets/avatar.webp';
-import robotAvatar from '../../../assets/robot.webp';
 
 const inputData = ref('');
 const output = ref('');
@@ -183,6 +181,27 @@ function getIconColorInfo(score) {
     return { icon: 'notifications', color: 'yellow' };
   } else {
     return { icon: 'done_all', color: 'green' };
+  }
+}
+const sendDataInput = async () =>{
+  const url = 'http://49.232.195.59:8100/defense/inputScan';
+  const prompt = inputData.value.trim();
+  try {
+    console.log(prompt);
+    // post请求
+    const response = await axios.post(url, { prompt });
+    localStorage.setItem('serverResponse', JSON.stringify(response));
+    output.value = response.data;
+
+    console.log('Response:', response.data);
+
+
+
+
+  } catch (error) {
+    console.error('Error:', error);
+    responseReceived.value = false;
+    // 处理错误情况
   }
 }
 

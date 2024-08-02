@@ -1,14 +1,14 @@
 <template>
   <div class="row">
-    <div class="text-h2 inner-headline2 col">安全LLM</div>
-    <div class="text-h5 inner-headline2 col">当前大模型已开启防御</div>
+    <div class="text-h2 inner-headline2 col">输出检测</div>
+    <div class="text-h5 inner-headline2 col">根据需求选择输出检测模块，配置相应参数，对内容进行净化，适应企业特定任务需要</div>
   </div>
   <q-page>
     <div class="bg-defense-r" style="border-radius: 8px">
       <div class="q-pa-md">
         <div class="column">
           <!-- 显示区 -->
-          <div
+          <!-- <div
             class="q-mt-md"
             style="
               overflow-y: auto;
@@ -39,7 +39,7 @@
                 :bg-color="message.sender === 'user' ? 'amber-7' : 'primary'"
               />
             </div>
-          </div>
+          </div> -->
           <!-- 输入区 -->
           <q-input
             v-model="inputData"
@@ -60,11 +60,11 @@
             <div class="col-7"></div> -->
           </div>
           <!-- 分数区 -->
-          <!-- <br /> -->
-          <!-- <div v-if="responseReceived">
+          <br />
+          <div>
             <div class="row q-gutter-lg">
               <q-card bordered class="my-card col bg-defense">
-                <q-card-section class="row items-center">
+                <!-- <q-card-section class="row items-center">
                   <div class="text-h6">输入分数</div>
                   <q-space></q-space>
 
@@ -98,7 +98,7 @@
                       </tr>
                     </tbody>
                   </q-markup-table>
-                </q-card-section>
+                </q-card-section> -->
               </q-card>
               <q-card bordered class="my-card col bg-defense">
                 <q-card-section class="row items-center">
@@ -137,7 +137,7 @@
                 </q-card-section>
               </q-card>
             </div>
-          </div> -->
+          </div>
         </div>
 
       </div>

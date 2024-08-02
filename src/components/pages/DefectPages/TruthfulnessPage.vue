@@ -123,7 +123,6 @@ function uploadFile() {
     return;
   }
 
-  // 创建FormData对象准备上传
   const formData = new FormData();
   formData.append('file', selectedFile.value);
 

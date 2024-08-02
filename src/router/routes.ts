@@ -71,6 +71,16 @@ const routes: RouteRecordRaw[] = [
         component: () => import('src/pages/DefensePage.vue'),
         children: [
           {
+            path: 'input',
+            component: () =>
+              import('src/components/pages/DefensePages/InputDefense.vue'),
+          },
+          {
+            path: 'output',
+            component: () =>
+              import('src/components/pages/DefensePages/OutputDefense.vue'),
+          },
+          {
             path: 'res',
             component: () =>
               import('src/components/pages/DefensePages/MessageRes.vue'),
@@ -79,7 +89,7 @@ const routes: RouteRecordRaw[] = [
             path: 'score',
             component: () =>
               import('src/components/pages/DefensePages/MessageScore.vue'),
-          }
+          },
         ],
       },
       {

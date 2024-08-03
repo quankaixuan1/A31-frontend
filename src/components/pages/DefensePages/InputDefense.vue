@@ -1,7 +1,9 @@
 <template>
   <div class="row">
     <div class="text-h2 inner-headline2 col">输入检测</div>
-    <div class="text-h5 inner-headline2 col">根据需求选择输出检测模块，配置相应参数，对内容进行净化，适应企业特定任务需要</div>
+    <div class="text-h5 inner-headline2 col">
+      根据需求选择输出检测模块，配置相应参数，对内容进行净化，适应企业特定任务需要
+    </div>
   </div>
   <q-page>
     <div class="bg-defense-r" style="border-radius: 8px">
@@ -64,8 +66,8 @@
           <div>
             <div class="row q-gutter-lg">
               <q-card bordered class="my-card col bg-defense">
-                <!-- <q-card-section class="row items-center">
-                  <div class="text-h6">输出分数</div>
+                <q-card-section class="row items-center">
+                  <div class="text-h6">检测终端</div>
                   <q-space></q-space>
                   <q-icon
                     :name="outputIconInfo.icon"
@@ -77,27 +79,16 @@
                 <q-separator dark inset />
 
                 <q-card-section>
-                  <q-markup-table separator="cell">
-                    <tbody>
-                      <tr>
-                        <td class="text-left">Sensitive</td>
-                        <td class="text-center">{{ Sensitive }}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-left">Relevance</td>
-                        <td class="text-center">{{ Relevance }}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-left">Deanonymize</td>
-                        <td class="text-center">{{ Deanonymize }}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-left">NoRefusal</td>
-                        <td class="text-center">{{ NoRefusal }}</td>
-                      </tr>
-                    </tbody>
-                  </q-markup-table>
-                </q-card-section> -->
+                  <q-card dark flat style="min-height: 192px">
+                    <q-card-section>
+                      <div class="text-subtitle2">Detect server></div>
+                      <br />
+                      <div>
+                        {{ outputData }}
+                      </div>
+                    </q-card-section>
+                  </q-card>
+                </q-card-section>
               </q-card>
               <q-card bordered class="my-card col bg-defense">
                 <q-card-section class="row items-center">
@@ -139,11 +130,9 @@
             </div>
           </div>
         </div>
-
       </div>
-
     </div>
-    <br><br>
+    <br /><br />
   </q-page>
 </template>
 <script setup>
@@ -151,6 +140,8 @@ import { ref } from 'vue';
 import axios from 'axios';
 
 const inputData = ref('');
+const outputData = ref('');
+
 const output = ref('');
 
 const responseReceived = ref(false);
@@ -183,7 +174,7 @@ function getIconColorInfo(score) {
     return { icon: 'done_all', color: 'green' };
   }
 }
-const sendDataInput = async () =>{
+const sendDataInput = async () => {
   const url = 'http://49.232.195.59:8100/defense/inputScan';
   const prompt = inputData.value.trim();
   try {
@@ -191,19 +182,15 @@ const sendDataInput = async () =>{
     // post请求
     const response = await axios.post(url, { prompt });
     localStorage.setItem('serverResponse', JSON.stringify(response));
-    output.value = response.data;
+    outputData.value = response.data;
 
     console.log('Response:', response.data);
-
-
-
-
   } catch (error) {
     console.error('Error:', error);
     responseReceived.value = false;
     // 处理错误情况
   }
-}
+};
 
 const sendData = async () => {
   const url = 'http://49.232.195.59:8100/defense/exec';

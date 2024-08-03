@@ -46,13 +46,13 @@
             label="请输入内容"
             outlined
             color="white"
-            @keyup.enter="sendData"
+            @keyup.enter="sendDataOutput"
           />
           <br />
           <div class="fit row">
             <q-btn
               label="发送数据"
-              @click="sendData"
+              @click="sendDataOutput"
               class="bg-defense col-2"
             />
             <!-- <div class="col"></div>
@@ -64,13 +64,13 @@
           <div>
             <div class="row q-gutter-lg">
               <q-card bordered class="my-card col bg-defense">
-                <!-- <q-card-section class="row items-center">
-                  <div class="text-h6">输入分数</div>
+                <q-card bordered class="my-card col bg-defense">
+                <q-card-section class="row items-center">
+                  <div class="text-h6">检测终端</div>
                   <q-space></q-space>
-
                   <q-icon
-                    :name="inputIconInfo.icon"
-                    :color="inputIconInfo.color"
+                    :name="outputIconInfo.icon"
+                    :color="outputIconInfo.color"
                     size="lg"
                   />
                 </q-card-section>
@@ -78,27 +78,17 @@
                 <q-separator dark inset />
 
                 <q-card-section>
-                  <q-markup-table separator="cell">
-                    <tbody>
-                      <tr>
-                        <td class="text-left">Anonymize</td>
-                        <td class="text-center">{{ Anonymize }}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-left">Toxicity</td>
-                        <td class="text-center">{{ Toxicity }}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-left">TokenLimit</td>
-                        <td class="text-center">{{ TokenLimit }}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-left">PromptInjection</td>
-                        <td class="text-center">{{ PromptInjection }}</td>
-                      </tr>
-                    </tbody>
-                  </q-markup-table>
-                </q-card-section> -->
+                  <q-card dark flat style="min-height: 192px">
+                    <q-card-section>
+                      <div class="text-subtitle2">Detect server></div>
+                      <br />
+                      <div>
+                        {{ outputData }}
+                      </div>
+                    </q-card-section>
+                  </q-card>
+                </q-card-section>
+              </q-card>
               </q-card>
               <q-card bordered class="my-card col bg-defense">
                 <q-card-section class="row items-center">
@@ -153,6 +143,7 @@ import userAvatar from '../../../assets/avatar.webp';
 import robotAvatar from '../../../assets/robot.webp';
 
 const inputData = ref('');
+const outputData = ref('')
 const output = ref('');
 
 const responseReceived = ref(false);
@@ -185,6 +176,23 @@ function getIconColorInfo(score) {
     return { icon: 'done_all', color: 'green' };
   }
 }
+const sendDataOutput = async () => {
+  const url = 'http://49.232.195.59:8100/defense/outputScan';
+  const prompt = inputData.value.trim();
+  try {
+    console.log(prompt);
+    // post请求
+    const response = await axios.post(url, { prompt });
+    localStorage.setItem('serverResponse', JSON.stringify(response));
+    outputData.value = response.data;
+
+    console.log('Response:', response.data);
+  } catch (error) {
+    console.error('Error:', error);
+    responseReceived.value = false;
+    // 处理错误情况
+  }
+};
 
 const sendData = async () => {
   const url = 'http://49.232.195.59:8100/defense/exec';

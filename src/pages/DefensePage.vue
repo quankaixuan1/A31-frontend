@@ -6,7 +6,7 @@
     </div>
     <q-img src="../assets/defense.png"></q-img>
     <br /><br />
-    <q-page> <div class="text-body1">介绍文字……</div> </q-page>
+    <q-page> <div class="text-body1"></div> </q-page>
   </div>
   <router-view v-slot="{ Component }">
     <keep-alive>

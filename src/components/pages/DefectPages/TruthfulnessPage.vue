@@ -106,7 +106,7 @@ const step = ref(1);
 // const showTable = ref(false);
 
 function downloadFile() {
-  const url = 'https://github.com/HowieHwong/TrustLLM/raw/main/dataset/dataset.zip'; // 这里的URL应指向你想要下载的文件
+  const url = 'http://49.232.195.59:8100/download'; // 这里的URL应指向你想要下载的文件
   const link = document.createElement('a');
   link.href = url;
   link.download = 'dataset.zip'; // 提供下载时的文件名

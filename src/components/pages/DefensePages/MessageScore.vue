@@ -60,8 +60,8 @@
             <div class="col-7"></div> -->
           </div>
           <!-- 分数区 -->
-          <!-- <br /> -->
-          <!-- <div v-if="responseReceived">
+          <br />
+          <div v-if="responseReceived">
             <div class="row q-gutter-lg">
               <q-card bordered class="my-card col bg-defense">
                 <q-card-section class="row items-center">
@@ -137,7 +137,7 @@
                 </q-card-section>
               </q-card>
             </div>
-          </div> -->
+          </div>
         </div>
 
       </div>

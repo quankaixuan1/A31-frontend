@@ -177,6 +177,7 @@ function getIconColorInfo(score) {
 const sendDataInput = async () => {
   const url = 'http://49.232.195.59:8100/defense/inputScan';
   const prompt = inputData.value.trim();
+  inputData.value = '';
   try {
     console.log(prompt);
     // post请求

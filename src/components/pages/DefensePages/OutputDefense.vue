@@ -1,7 +1,9 @@
 <template>
   <div class="row">
     <div class="text-h2 inner-headline2 col">输出检测</div>
-    <div class="text-h5 inner-headline2 col">根据需求选择输出检测模块，配置相应参数，对内容进行净化，适应企业特定任务需要</div>
+    <div class="text-h5 inner-headline2 col">
+      根据需求选择输出检测模块，配置相应参数，对内容进行净化，适应企业特定任务需要
+    </div>
   </div>
   <q-page>
     <div class="bg-defense-r" style="border-radius: 8px">
@@ -65,30 +67,30 @@
             <div class="row q-gutter-lg">
               <q-card bordered class="my-card col bg-defense">
                 <q-card bordered class="my-card col bg-defense">
-                <q-card-section class="row items-center">
-                  <div class="text-h6">检测终端</div>
-                  <q-space></q-space>
-                  <q-icon
-                    :name="outputIconInfo.icon"
-                    :color="outputIconInfo.color"
-                    size="lg"
-                  />
-                </q-card-section>
+                  <q-card-section class="row items-center">
+                    <div class="text-h6">检测终端</div>
+                    <q-space></q-space>
+                    <q-icon
+                      :name="outputIconInfo.icon"
+                      :color="outputIconInfo.color"
+                      size="lg"
+                    />
+                  </q-card-section>
 
-                <q-separator dark inset />
+                  <q-separator dark inset />
 
-                <q-card-section>
-                  <q-card dark flat style="min-height: 192px">
-                    <q-card-section>
-                      <div class="text-subtitle2">Detect server></div>
-                      <br />
-                      <div>
-                        {{ outputData }}
-                      </div>
-                    </q-card-section>
-                  </q-card>
-                </q-card-section>
-              </q-card>
+                  <q-card-section>
+                    <q-card dark flat style="min-height: 192px">
+                      <q-card-section>
+                        <div class="text-subtitle2">Detect server></div>
+                        <br />
+                        <div>
+                          {{ outputData }}
+                        </div>
+                      </q-card-section>
+                    </q-card>
+                  </q-card-section>
+                </q-card>
               </q-card>
               <q-card bordered class="my-card col bg-defense">
                 <q-card-section class="row items-center">
@@ -129,11 +131,9 @@
             </div>
           </div>
         </div>
-
       </div>
-
     </div>
-    <br><br>
+    <br /><br />
   </q-page>
 </template>
 <script setup>
@@ -143,7 +143,7 @@ import userAvatar from '../../../assets/avatar.webp';
 import robotAvatar from '../../../assets/robot.webp';
 
 const inputData = ref('');
-const outputData = ref('')
+const outputData = ref('');
 const output = ref('');
 
 const responseReceived = ref(false);
@@ -179,6 +179,7 @@ function getIconColorInfo(score) {
 const sendDataOutput = async () => {
   const url = 'http://49.232.195.59:8100/defense/outputScan';
   const prompt = inputData.value.trim();
+  inputData.value = '';
   try {
     console.log(prompt);
     // post请求

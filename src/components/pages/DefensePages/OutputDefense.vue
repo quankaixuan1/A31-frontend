@@ -82,17 +82,32 @@
                   <q-card-section>
                     <q-card dark flat style="min-height: 192px">
                       <q-card-section>
-                        <div class="text-subtitle2">Detect server></div>
-                        <br />
-                        <div>
-                          {{ outputData }}
-                        </div>
+                        <q-card dark flat style="min-height: 192px">
+                          <q-card-section>
+                            <!-- <div class="text-subtitle2">Detect server></div> -->
+                            <q-chat-message
+                              v-for="(message, index) in conversation"
+                              :key="index"
+                              :text="[message.text]"
+                              :text-color="
+                                message.sender === 'user' ? 'white' : 'white'
+                              "
+                              :bg-color="
+                                message.sender === 'user' ? 'dark' : 'dark'
+                              "
+                            />
+                            <!-- <br /> -->
+                            <!-- <div>
+                        {{ outputData }}
+                      </div> -->
+                          </q-card-section>
+                        </q-card>
                       </q-card-section>
                     </q-card>
                   </q-card-section>
                 </q-card>
               </q-card>
-              <q-card bordered class="my-card col bg-defense">
+              <!-- <q-card bordered class="my-card col bg-defense">
                 <q-card-section class="row items-center">
                   <div class="text-h6">输出分数</div>
                   <q-space></q-space>
@@ -127,7 +142,7 @@
                     </tbody>
                   </q-markup-table>
                 </q-card-section>
-              </q-card>
+              </q-card> -->
             </div>
           </div>
         </div>
@@ -179,6 +194,8 @@ function getIconColorInfo(score) {
 const sendDataOutput = async () => {
   const url = 'http://49.232.195.59:8100/defense/outputScan';
   const prompt = inputData.value.trim();
+  conversation.value.push({ text: 'Detect server>'+prompt, sender: 'user' });
+
   inputData.value = '';
   try {
     console.log(prompt);
@@ -187,6 +204,9 @@ const sendDataOutput = async () => {
     localStorage.setItem('serverResponse', JSON.stringify(response));
     outputData.value = response.data;
 
+
+    const reply = response.data;
+    conversation.value.push({ text: reply, sender: 'robot' });
     console.log('Response:', response.data);
   } catch (error) {
     console.error('Error:', error);

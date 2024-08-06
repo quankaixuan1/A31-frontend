@@ -49,19 +49,16 @@
             @keyup.enter="sendData"
           />
           <br />
-          <div class="fit row">
+          <!-- <div class="fit row">
             <q-btn
               label="发送数据"
               @click="sendData"
               class="bg-defense col-2"
             />
-            <!-- <div class="col"></div>
-            <q-btn label="测试" @click="test" class="bg-defense col-2" />
-            <div class="col-7"></div> -->
-          </div>
+          </div> -->
           <!-- 分数区 -->
-          <br />
-          <div v-if="responseReceived">
+          <!-- <br /> -->
+          <!-- <div v-if="responseReceived">
             <div class="row q-gutter-lg">
               <q-card bordered class="my-card col bg-defense">
                 <q-card-section class="row items-center">
@@ -137,7 +134,7 @@
                 </q-card-section>
               </q-card>
             </div>
-          </div>
+          </div> -->
         </div>
 
       </div>
@@ -187,7 +184,7 @@ function getIconColorInfo(score) {
 }
 
 const sendData = async () => {
-  const url = 'http://49.232.195.59:8100/defense/exec';
+  const url = 'http://49.232.195.59:8100/defense/secTest';
   const prompt = inputData.value.trim();
   if (prompt) {
     conversation.value.push({ text: prompt, sender: 'user' });

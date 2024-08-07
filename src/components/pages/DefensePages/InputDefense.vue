@@ -2,7 +2,7 @@
   <div class="row">
     <div class="text-h2 inner-headline2 col">输入检测</div>
     <div class="text-h5 inner-headline2 col">
-      根据需求选择输出检测模块，配置相应参数，对内容进行净化，适应企业特定任务需要
+      根据需求选择输入检测模块，配置相应参数，对内容进行净化，适应企业特定任务需要
     </div>
   </div>
   <q-page>
